@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\\\\public\\\\images\\\\cria-team\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\\\\public\\\\images\\\\agonx\")",
+      "Bash(Write-Host \"Directories created\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\" -Recurse -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\" -Force | Where-Object {$_.Name -match '^\\\\.'} | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer })",
+      "mcp__claude_ai_Figma__get_design_context",
+      "WebFetch(domain:kristianphoenix.com)",
+      "Bash(curl -s \"https://kristianphoenix.com/\")"
+    ]
+  }
+}

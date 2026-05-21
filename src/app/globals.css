@@ -1,0 +1,544 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Базовый размер шрифта: 1rem = 10px ────────────────────── */
+html {
+  font-size: 10px; /* мобилка: фиксированная база, доделаем позже */
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 0.6944vw; /* десктоп: 1rem = 10px при 1440px, скейлится */
+  }
+}
+
+/* ── Цвета: main ───────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --card:       #eeeeee;
+  --selection:  #d0d0d0;
+  --primary:    #000000;
+  --secondary:  #808080;
+
+  /* Spacing scale */
+  --size-xs: .375rem;
+  --size-sm: .75rem;
+  --size-md: 1.5rem;
+  --size-lg: 3rem;
+  --size-xl: 9rem;
+  --size-2xl: 18rem;
+
+  /* Отступы */
+  --px:       40px;
+  --border-x: 20px;
+
+  /* Типографика: fluid clamp от 390px до ∞
+     Формула: max(mobile_px, calc(intercept + slope*vw))
+     Шрифт = 20px на 390px, 24px на 1440px — и растёт дальше */
+  --nav-size:     clamp(22px, calc(21px + .21vw), 26px);
+  --nav-lh:       0.833;
+  --nav-ls:       0.05em;
+
+  --title-size:   max(14px, calc(13.26px + .1905vw));
+  --title-lh:     1.25;
+  --title-ls:    -0.02em;
+
+  --body1-size:   max(16px, calc(14.51px + .381vw));
+  --body1-lh:     1.25;
+  --body1-ls:    -0.02em;
+
+  --body2-size:   max(14px, calc(13.26px + .1905vw));
+  --body2-lh:     1.25;
+  --body2-ls:    -0.02em;
+
+  --metrics-size: max(20px, calc(18.51px + .381vw));
+  --metrics-lh:   0.833;
+  --metrics-ls:  -0.05em;
+}
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  :root {
+    --px:       20px;
+    --border-x: 10px;
+  }
+
+  .site-header {
+    top: 10px;
+    left: 20px;
+  }
+
+  .case-card.align-left {
+    width: 100%;
+    align-self: stretch;
+  }
+  
+  .case-page-grid {
+    gap: 60px;
+    padding-bottom: 40px;
+  }
+
+  .case-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-info-grid > .case-card {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+  }
+
+  .case-info-grid > .info-section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .case-info-grid {
+    margin-top: var(--size-xl);
+  }
+
+  .case-info-grid > .info-section {
+    margin-top: var(--size-xl);
+  }
+
+  .site-nav {
+    margin-top: 100px;
+  }
+
+  .case-sidebar {
+    gap: 30px;
+  }
+
+  .case-card-photo-inner {
+    padding: 0 20px;
+  }
+
+  .case-card-item {
+    gap: 10px;
+  }
+
+  .case-card-desc {
+    gap: 10px;
+  } 
+
+  .case-card-title-row {
+    gap: 10px;
+  }
+
+  .sandbox-card {
+    width: 100%;
+  }
+
+  .sandbox-main {
+    gap: var(--size-xl);
+  }
+
+  .sandbox-grid-card {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+  }
+}
+
+/* ── Case page ───────────────────────────────────────────── */
+@layer components {
+  .case-page-grid {
+    @apply flex flex-col;
+    gap: var(--size-xl);
+    padding: 50vh var(--px) var(--size-xl) var(--px);
+  }
+
+  .case-sidebar {
+    @apply flex flex-col;
+    gap: 60px;;
+    justify-content: flex-end;
+  }
+
+  .case-sidebar-info {
+    @apply flex flex-col;
+    gap: 30px;
+  }
+
+  .case-site-link {
+    @apply flex flex-col w-fit text-primary;
+    gap: 7px;
+  }
+
+  .case-site-link-line {
+    @apply h-px bg-primary;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .case-site-link:hover .case-site-link-line {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .case-site-link-line {
+      width: 100%;
+    }
+  }
+
+  .link-underline {
+    @apply relative w-fit text-primary;
+  }
+
+  .link-underline::after {
+    content: "";
+    @apply absolute bg-primary;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .link-underline::after {
+      width: 100%;
+    }
+  }
+
+  .metrics-box {
+    @apply flex flex-col;
+    border: 1px solid;
+    border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+
+  .metrics-header {
+    @apply flex items-center;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid;
+    border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+
+  .metrics-cells {
+    @apply flex;
+  }
+
+  .metrics-cell {
+    @apply flex flex-col flex-1;
+    gap: 15px;
+    padding: 15px;
+    border-right: 1px solid;
+    border-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+
+  .metrics-cell:last-child {
+    border-right: none;
+  }
+
+  .case-cards-col {
+    @apply flex flex-col;
+    gap: var(--size-lg);
+  }
+
+  .case-card-item {
+    @apply flex flex-col;
+    gap: 15px;
+  }
+
+  .case-card-photo {
+    @apply w-full bg-card flex items-center;
+    aspect-ratio: 845 / 713;
+  }
+
+  .case-card-photo-inner {
+    @apply w-full;
+    padding: 0 60px;
+  }
+
+  .case-card-desc {
+    @apply flex flex-col;
+    gap: 15px;
+  }
+
+  .case-card-title-row {
+    @apply flex items-start justify-between cursor-pointer;
+    gap: 15px;
+  }
+
+  .case-card-title-left {
+    @apply flex items-center;
+    gap: 5px;
+  }
+
+  .case-card-number {
+    @apply flex items-center typo-title text-primary uppercase;
+  }
+
+  .case-card-number-val {
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+  }
+
+  .case-card-toggle {
+    @apply flex items-center cursor-pointer bg-transparent border-0 p-0 text-primary;
+  }
+
+  .case-card-toggle-icon {
+    display: inline-block;
+    width: 10px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-page-grid {
+    display: block;
+    padding: 0;
+  }
+
+  .case-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 37.15vw;
+    height: 100vh;
+    padding: 20px 20px 40px 40px;
+    border-right: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .case-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .case-cards-col {
+    margin-left: 37.15vw;
+    padding: 20px 40px 40px 20px;
+  }
+
+}
+
+/* ── Desktop: ширина описания = до левого края AGONX ───────── */
+@media (min-width: 768px) {
+  :root {
+    --desc-w: calc(48.67vw - 2 * var(--px) - 150px);
+  }
+}
+
+/* ── Цвета: agonx ─────────────────────────────────────────── */
+.theme-agonx {
+  --background: #1f1e1d;
+  --card:       #262624;
+  --selection:  #505050;
+  --contrast:   #000000;
+  --primary:    #ffffff;
+  --secondary:  #8f8e8e;
+  --red:        #cf1e30;
+}
+
+.theme-agonx .metrics-box {
+  background-color: var(--contrast);
+}
+
+/* ── Preloader ────────────────────────────────────────────── */
+@keyframes slide-up {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
+.reveal-wrap {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.reveal-wrap > * {
+  display: inline-block;
+  animation: slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 2.2s;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--primary);
+    font-family: var(--font-manrope), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--selection);
+    color: var(--primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+/* ── Layout классы ───────────────────────────────────────── */
+@layer components {
+  .page-root {
+    @apply relative bg-background text-primary;
+    overflow-x: clip;
+  }
+
+  .border-lines {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .site-header {
+    @apply fixed z-10;
+    top: 20px;
+    left: 40px;
+  }
+
+  .main-content {
+    @apply relative flex flex-col;
+    padding: 50vh var(--px) 0 var(--px);
+  }
+
+  .case-card.align-left {
+    @apply self-start;
+    width: calc(51.33vw + 150px);
+  }
+
+  .case-info-grid {
+    display: grid;
+    grid-template-columns: 1fr calc(51.33vw + 150px);
+    margin-top: var(--size-2xl);
+  }
+
+  .case-info-grid > .case-card {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .case-info-grid > .info-section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .case-card-image {
+    @apply relative block w-full overflow-hidden bg-card;
+    aspect-ratio: 1778 / 1112;
+  }
+
+  .card-overlay {
+    @apply absolute inset-0 flex items-center justify-center;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .case-card-image:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .case-card-meta {
+    @apply flex flex-col md:flex-row md:justify-between md:items-center;
+    margin-top: 15px;
+    gap: 5px;
+  }
+
+  .info-section {
+    @apply flex flex-col;
+    margin-top: var(--size-2xl);
+    gap: var(--size-lg);
+  }
+
+  .site-nav {
+    @apply flex items-center;
+    gap: 10px;
+    margin-top: 150px;
+    padding: 0 var(--px) 20px var(--px);
+  }
+
+  .nav-dot {
+    @apply bg-primary;
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+  }
+
+  .sandbox-content {
+    @apply relative flex flex-col;
+    padding: 120px var(--px) 0 var(--px);
+    gap: var(--size-xl);
+  }
+
+  .sandbox-card {
+    @apply flex flex-col self-start;
+    gap: 15px;
+    width: calc(51.33vw + 150px);
+  }
+
+  .sandbox-card.align-right {
+    @apply self-end;
+  }
+
+  .sandbox-main {
+    gap: var(--size-2xl);
+  }
+
+  .sandbox-grid-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .sandbox-card-text {
+    @apply typo-body2 text-primary;
+  }
+}
+
+/* ── Типографика ──────────────────────────────────────────── */
+@layer utilities {
+  .typo-nav {
+    font-family: var(--font-handjet), monospace;
+    font-weight: 600;
+    font-size: var(--nav-size);
+    line-height: var(--nav-lh);
+    letter-spacing: var(--nav-ls);
+    text-transform: uppercase;
+    font-variation-settings: 'ELGR' 1, 'ELSH' 2;
+    cursor: pointer;
+  }
+
+  .typo-title {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 700;
+    font-size: var(--title-size);
+    line-height: var(--title-lh);
+    letter-spacing: var(--title-ls);
+    text-transform: uppercase;
+  }
+
+  .typo-body1 {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 500;
+    font-size: var(--body1-size);
+    line-height: var(--body1-lh);
+    letter-spacing: var(--body1-ls);
+  }
+
+  .typo-body2 {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 500;
+    font-size: var(--body2-size);
+    line-height: var(--body2-lh);
+    letter-spacing: var(--body2-ls);
+  }
+
+  .typo-metrics {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 600;
+    font-size: var(--metrics-size);
+    line-height: var(--metrics-lh);
+    letter-spacing: var(--metrics-ls);
+    text-transform: uppercase;
+  }
+}
