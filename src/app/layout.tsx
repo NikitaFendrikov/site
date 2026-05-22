@@ -38,11 +38,11 @@ export const metadata: Metadata = {
   },
   description:
     "Продуктовый дизайнер. Опыт в UI/UX, фронтенде и создании бренда.",
-  metadataBase: new URL("https://yoursite.com"),
+  metadataBase: new URL("https://nikitafendrikov.com"),
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://yoursite.com",
+    url: "https://nikitafendrikov.com",
     siteName: "Никита Фендриков",
     // ↓ Добавь /public/og-image.jpg для превью в соцсетях (1200×630 px)
     images: [
