@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { createContext, useContext, useState, useCallback, useRef, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const NavContext = createContext<{ navigateTo: (href: string) => void }>({ navigateTo: () => {} });
 
@@ -10,12 +10,27 @@ export function NavigationProvider({ children }: { children: React.ReactNode }) 
   const [fading, setFading] = useState(false);
   const [dotCount, setDotCount] = useState(1);
   const dotInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+  const targetHref = useRef<string | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (targetHref.current && pathname === targetHref.current) {
+      targetHref.current = null;
+      setFading(true);
+      setTimeout(() => {
+        setVisible(false);
+        setFading(false);
+        if (dotInterval.current) clearInterval(dotInterval.current);
+      }, 800);
+    }
+  }, [pathname]);
 
   const navigateTo = useCallback((href: string) => {
     setVisible(true);
     setFading(false);
     setDotCount(1);
+    targetHref.current = href;
 
     dotInterval.current = setInterval(() => {
       setDotCount(c => c === 3 ? 1 : c + 1);
@@ -23,14 +38,6 @@ export function NavigationProvider({ children }: { children: React.ReactNode }) 
 
     setTimeout(() => {
       router.push(href);
-      setTimeout(() => {
-        setFading(true);
-        setTimeout(() => {
-          setVisible(false);
-          setFading(false);
-          if (dotInterval.current) clearInterval(dotInterval.current);
-        }, 700);
-      }, 300);
     }, 1000);
   }, [router]);
 
