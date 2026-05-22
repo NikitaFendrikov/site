@@ -145,7 +145,7 @@ html {
   .case-page-grid {
     @apply flex flex-col;
     gap: var(--size-xl);
-    padding: 50vh var(--px) var(--size-xl) var(--px);
+    padding: 40vh var(--px) var(--size-xl) var(--px);
   }
 
   .case-sidebar {
@@ -398,7 +398,7 @@ html {
 
   .main-content {
     @apply relative flex flex-col;
-    padding: 50vh var(--px) 0 var(--px);
+    padding: 40vh var(--px) 0 var(--px);
   }
 
   .case-card.align-left {
