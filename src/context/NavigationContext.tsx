@@ -17,12 +17,16 @@ export function NavigationProvider({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     if (targetHref.current && pathname === targetHref.current) {
       targetHref.current = null;
-      setFading(true);
-      setTimeout(() => {
-        setVisible(false);
-        setFading(false);
-        if (dotInterval.current) clearInterval(dotInterval.current);
-      }, 800);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setFading(true);
+          setTimeout(() => {
+            setVisible(false);
+            setFading(false);
+            if (dotInterval.current) clearInterval(dotInterval.current);
+          }, 800);
+        });
+      });
     }
   }, [pathname]);
 
