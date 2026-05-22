@@ -33,11 +33,10 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   // ↓ Измени на своё имя/бренд
   title: {
-    default: "Никита Фендриков — Дизайнер",
+    default: "Никита Фендриков",
     template: "%s — Никита Фендриков",
   },
-  description:
-    "Продуктовый дизайнер. Опыт в UI/UX, фронтенде и создании бренда.",
+  description: "Продуктовый дизайнер.",
   metadataBase: new URL("https://nikitafendrikov.com"),
   openGraph: {
     type: "website",
