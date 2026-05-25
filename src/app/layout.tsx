@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   // ↓ Измени на своё имя/бренд
   title: {
     default: "Никита Фендриков",
-    template: "%s — Никита Фендриков",
+    template: "%s - Никита Фендриков",
   },
   description: "Продуктовый дизайнер.",
   metadataBase: new URL("https://nikitafendrikov.com"),

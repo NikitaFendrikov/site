@@ -90,7 +90,7 @@ export default function Home() {
       {/* Футер */}
       <nav className="site-nav">
         <a
-          href="/Фендриков. Продуктовый дизайнер. Резюме.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="link-underline"

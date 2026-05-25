@@ -13,7 +13,10 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\fen\\\\Desktop\\\\Projects\\\\site\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer })",
       "mcp__claude_ai_Figma__get_design_context",
       "WebFetch(domain:kristianphoenix.com)",
-      "Bash(curl -s \"https://kristianphoenix.com/\")"
+      "Bash(curl -s \"https://kristianphoenix.com/\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
