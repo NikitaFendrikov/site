@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Handjet, Manrope } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import Preloader from "@/components/Preloader";
 import { NavigationProvider } from "@/context/NavigationContext";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -77,7 +76,6 @@ export default function RootLayout({
       <body
         className={`${handjet.variable} ${manrope.variable}`}
       >
-        <Preloader />
         <NavigationProvider>
           <SmoothScroll>{children}</SmoothScroll>
         </NavigationProvider>
