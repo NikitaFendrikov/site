@@ -145,7 +145,7 @@ html {
   .case-page-grid {
     @apply flex flex-col;
     gap: var(--size-xl);
-    padding: 40vh var(--px) var(--size-xl) var(--px);
+    padding: 20vh var(--px) var(--size-xl) var(--px);
   }
 
   .case-sidebar {
@@ -246,7 +246,7 @@ html {
 
   .case-card-photo {
     @apply w-full bg-card flex items-center;
-    aspect-ratio: 845 / 713;
+    aspect-ratio: 4 / 3;
   }
 
   .case-card-photo-inner {
@@ -260,7 +260,7 @@ html {
   }
 
   .case-card-title-row {
-    @apply flex items-start justify-between cursor-pointer;
+    @apply flex items-start justify-between;
     gap: 15px;
   }
 
@@ -398,7 +398,7 @@ html {
 
   .main-content {
     @apply relative flex flex-col;
-    padding: 40vh var(--px) 0 var(--px);
+    padding: 20vh var(--px) 0 var(--px);
   }
 
   .case-card.align-left {
@@ -409,7 +409,7 @@ html {
   .case-info-grid {
     display: grid;
     grid-template-columns: 1fr calc(51.33vw + 150px);
-    margin-top: var(--size-2xl);
+    margin-top: var(--size-xl);
   }
 
   .case-info-grid > .case-card {
@@ -447,7 +447,7 @@ html {
 
   .info-section {
     @apply flex flex-col;
-    margin-top: var(--size-2xl);
+    margin-top: var(--size-xl);
     gap: var(--size-lg);
   }
 
@@ -463,6 +463,25 @@ html {
     width: 5px;
     height: 5px;
     flex-shrink: 0;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-hint {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      right: 40px;
+      z-index: 50;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--primary);
+    }
   }
 
   .sandbox-content {
@@ -482,7 +501,7 @@ html {
   }
 
   .sandbox-main {
-    gap: var(--size-2xl);
+    gap: var(--size-xl);
   }
 
   .sandbox-grid-card {

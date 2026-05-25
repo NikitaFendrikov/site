@@ -2,6 +2,7 @@ import Link from "next/link";
 import { images } from "@/lib/images";
 import ScrambleText from "@/components/ScrambleText";
 import ImageReveal from "@/components/ImageReveal";
+import ScrollHint from "@/components/ScrollHint";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
       </div>
 
       {/* Контент */}
-      <div className="main-content sandbox-main" style={{ paddingTop: "20vh" }}>
+      <div className="main-content sandbox-main">
 
         {/* Карточка 1 — трекер времени, лево */}
         <div className="sandbox-card align-left">
@@ -77,6 +78,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      <ScrollHint targetSelector=".sandbox-card" offset={-80} />
 
       {/* Футер */}
       <nav className="site-nav">

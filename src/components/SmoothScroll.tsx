@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { setLenis } from "@/lib/lenis-store";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -15,9 +16,13 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       requestAnimationFrame(raf);
     }
 
+    setLenis(lenis);
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      setLenis(null);
+      lenis.destroy();
+    };
   }, []);
 
   return <>{children}</>;

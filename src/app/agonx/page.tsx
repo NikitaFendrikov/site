@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { images } from "@/lib/images";
 import ScrambleText from "@/components/ScrambleText";
+import ScrollHint from "@/components/ScrollHint";
 
 const cards = [
   {
@@ -46,35 +46,6 @@ const cards = [
 ];
 
 function CaseCard({ number, title, text, photo }: (typeof cards)[0]) {
-  const [open, setOpen] = useState(false);
-  const answerRef = useRef<HTMLDivElement>(null);
-
-  const handleToggle = () => {
-    const answer = answerRef.current;
-    if (!answer) return;
-
-    if (open) {
-      answer.style.height = answer.scrollHeight + "px";
-      requestAnimationFrame(() => {
-        answer.style.height = "0";
-      });
-      setOpen(false);
-    } else {
-      setOpen(true);
-      answer.style.height = "0";
-      requestAnimationFrame(() => {
-        answer.style.height = answer.scrollHeight + "px";
-      });
-      const handler = (e: TransitionEvent) => {
-        if (e.propertyName === "height") {
-          answer.style.height = "auto";
-          answer.removeEventListener("transitionend", handler);
-        }
-      };
-      answer.addEventListener("transitionend", handler);
-    }
-  };
-
   return (
     <div className="case-card-item">
       <motion.div
@@ -89,12 +60,7 @@ function CaseCard({ number, title, text, photo }: (typeof cards)[0]) {
         </div>
       </motion.div>
       <div className="case-card-desc">
-        <div
-          className="case-card-title-row"
-          onClick={handleToggle}
-          role="button"
-          aria-expanded={open}
-        >
+        <div className="case-card-title-row">
           <div className="case-card-title-left">
             <span className="case-card-number">
               <span>[</span>
@@ -103,18 +69,8 @@ function CaseCard({ number, title, text, photo }: (typeof cards)[0]) {
             </span>
             <span className="typo-title text-primary uppercase">{title}</span>
           </div>
-          <span className="case-card-toggle typo-title text-primary">
-            <span>[</span>
-            <span className="case-card-toggle-icon">{open ? "-" : "+"}</span>
-            <span>]</span>
-          </span>
         </div>
-        <div
-          ref={answerRef}
-          style={{ height: 0, overflow: "hidden", transition: "height 0.25s ease" }}
-        >
-          <p className="typo-body2 text-secondary" dangerouslySetInnerHTML={{ __html: text }} />
-        </div>
+        <p className="typo-body2 text-secondary" dangerouslySetInnerHTML={{ __html: text }} />
       </div>
     </div>
   );
@@ -188,6 +144,7 @@ export default function AgonxPage() {
         </div>
 
       </div>
+      <ScrollHint targetSelector=".case-card-photo" />
     </main>
   );
 }

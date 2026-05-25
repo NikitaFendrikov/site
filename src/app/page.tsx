@@ -4,6 +4,7 @@ import ScrambleText from "@/components/ScrambleText";
 import CaseCardLink from "@/components/CaseCardLink";
 import ImageReveal from "@/components/ImageReveal";
 import NameReveal from "@/components/NameReveal";
+import ScrollHint from "@/components/ScrollHint";
 
 export default function Home() {
   return (
@@ -86,6 +87,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      <ScrollHint targetSelector=".case-card" offset={-80} />
 
       {/* Футер */}
       <nav className="site-nav">
