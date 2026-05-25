@@ -6,20 +6,8 @@ export default function NameReveal({ children }: { children: React.ReactNode }) 
   const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const animate = () => {
-      if (innerRef.current) {
-        innerRef.current.style.animationPlayState = "running";
-      }
-      sessionStorage.setItem("preloader-done", "1");
-    };
-
-    const alreadyLoaded = sessionStorage.getItem("preloader-done");
-
-    if (alreadyLoaded) {
-      animate();
-    } else {
-      window.addEventListener("preloader:done", animate, { once: true });
-      return () => window.removeEventListener("preloader:done", animate);
+    if (innerRef.current) {
+      innerRef.current.style.animationPlayState = "running";
     }
   }, []);
 
