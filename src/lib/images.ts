@@ -3,7 +3,7 @@ const BASE = "https://cdn.sanity.io/images/jp3kooxh/production";
 export const images = {
   home: {
     criateam: `${BASE}/4887b8c658d14e1cf49c282e323c850a346dec91-4000x2250.jpg?auto=format`,
-    agonx:    `${BASE}/92ede0e5eb6818f5ca44bb662e51cbb372f00c9a-2880x1802.png?auto=format`,
+    agonx:    `${BASE}/3e791c680ee3f81c340473dc7fc8698283bf1272-1440x901.png?auto=format`,
   },
   criateam: {
     one:   `${BASE}/e3a6e3fcf6080bb40adf49f66b4d65d5a52042e9-1450x797.png?auto=format`,
@@ -18,7 +18,7 @@ export const images = {
     three: `${BASE}/9162d7d921eb5ba31d5c63e3d12850e504607c31-1450x630.png?auto=format`,
     four:  `${BASE}/bdc2c146fb43cd4edc9308ad7b2e94c71c6de29a-1440x1086.png?auto=format`,
     five:  `${BASE}/656f0119cf805ee89cc3c64ae0ea6a8bd6dc1721-1450x622.png?auto=format`,
-    six:   `${BASE}/1e80ec0748b1b6ff492cdc8b62766baa4f359a66-1450x907.png?auto=format`,
+    six:   `${BASE}/3e791c680ee3f81c340473dc7fc8698283bf1272-1440x901.png?auto=format`,
   },
   sandbox: {
     one:   `${BASE}/d5029fa4dedcc32573fb13ba733eec27da48bf3f-1920x1156.png?auto=format`,
