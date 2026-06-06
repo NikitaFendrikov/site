@@ -144,7 +144,7 @@ export default function AgonxPage() {
         </div>
 
       </div>
-      <ScrollHint targetSelector=".case-card-photo" />
+      <ScrollHint targetSelector=".case-card-photo" offset={60} />
     </main>
   );
 }
