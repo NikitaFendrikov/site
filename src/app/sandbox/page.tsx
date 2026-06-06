@@ -63,7 +63,7 @@ export default function Home() {
 
           <div className="info-section">
             <p className="typo-body1 text-primary">
-              Продуктовый дизайнер. Есть опыт во&nbsp;фронтенде и&nbsp;создании бренда.
+              UX/UI дизайнер. Есть опыт во&nbsp;фронтенде и&nbsp;создании бренда.
               Открыт к&nbsp;фулл-тайм предложениям и&nbsp;фрилансу.
             </p>
             <a

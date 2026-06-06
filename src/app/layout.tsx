@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "Никита Фендриков",
     template: "%s - Никита Фендриков",
   },
-  description: "Продуктовый дизайнер.",
+  description: "UX/UI дизайнер.",
   metadataBase: new URL("https://nikitafendrikov.com"),
   openGraph: {
     type: "website",
