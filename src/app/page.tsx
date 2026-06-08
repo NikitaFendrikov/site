@@ -45,7 +45,7 @@ export default function Home() {
               /&nbsp;&nbsp;AGONX
             </span>
             <span className="typo-body2 text-secondary">
-              Дизайн интерфейса платформы для турниров, брендинг
+              Дизайн интерфейса платформы для турниров, создание бренда
             </span>
           </div>
         </div>
