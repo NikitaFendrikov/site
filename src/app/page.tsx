@@ -33,38 +33,38 @@ export default function Home() {
 
       {/* Контент */}
       <div className="main-content">
-        {/* CRIA.TEAM */}
+        {/* AGONX */}
         <div className="case-card align-left">
           <ImageReveal>
-            <CaseCardLink href="/cria-team">
-              <img src={images.home.criateam} alt="CRIA.TEAM" className="w-full h-full object-cover" style={{ transform: "scale(1.38)", transformOrigin: "center 40%" }} />
+            <CaseCardLink href="/agonx">
+              <img src={images.home.agonx} alt="AGONX" className="w-full h-full object-cover" />
             </CaseCardLink>
           </ImageReveal>
           <div className="case-card-meta">
             <span className="typo-title text-primary">
-              /&nbsp;&nbsp;CRIA.TEAM
+              /&nbsp;&nbsp;AGONX
             </span>
             <span className="typo-body2 text-secondary">
-              Дизайн и разработка сайта-портфолио
+              Дизайн интерфейса платформы для турниров, брендинг
             </span>
           </div>
         </div>
 
-        {/* AGONX + описание — грид, колонки: 1fr | ширина карточки */}
+        {/* CRIA.TEAM + описание — грид, колонки: 1fr | ширина карточки */}
         <div className="case-info-grid">
 
           <div className="case-card">
             <ImageReveal>
-              <CaseCardLink href="/agonx">
-                <img src={images.home.agonx} alt="AGONX" className="w-full h-full object-cover" />
+              <CaseCardLink href="/cria-team">
+                <img src={images.home.criateam} alt="CRIA.TEAM" className="w-full h-full object-cover" style={{ transform: "scale(1.38)", transformOrigin: "center 40%" }} />
               </CaseCardLink>
             </ImageReveal>
             <div className="case-card-meta">
               <span className="typo-title text-primary">
-                /&nbsp;&nbsp;AGONX
+                /&nbsp;&nbsp;CRIA.TEAM
               </span>
               <span className="typo-body2 text-secondary">
-                Дизайн интерфейса платформы для турниров, брендинг
+                Дизайн и разработка сайта-портфолио
               </span>
             </div>
           </div>
