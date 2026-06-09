@@ -33,7 +33,8 @@ export default function Home() {
 
       {/* Контент */}
       <div className="main-content">
-        {/* AGONX */}
+
+        {/* AGONX — первый, лево */}
         <div className="case-card align-left">
           <ImageReveal>
             <CaseCardLink href="/agonx">
@@ -50,40 +51,54 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CRIA.TEAM + описание — грид, колонки: 1fr | ширина карточки */}
-        <div className="case-info-grid">
-
-          <div className="case-card">
-            <ImageReveal>
-              <CaseCardLink href="/cria-team">
-                <img src={images.home.criateam} alt="CRIA.TEAM" className="w-full h-full object-cover" style={{ transform: "scale(1.38)", transformOrigin: "center 40%" }} />
-              </CaseCardLink>
-            </ImageReveal>
-            <div className="case-card-meta">
-              <span className="typo-title text-primary">
-                /&nbsp;&nbsp;CRIA.TEAM
-              </span>
-              <span className="typo-body2 text-secondary">
-                Дизайн и разработка сайта-портфолио
-              </span>
-            </div>
+        {/* WAYBOT ROBOTICS — второй, право */}
+        <div className="case-card align-right">
+          <ImageReveal>
+            <CaseCardLink href="/waybot">
+              <img src={images.home.waybot} alt="WAYBOT ROBOTICS" className="w-full h-full object-cover" />
+            </CaseCardLink>
+          </ImageReveal>
+          <div className="case-card-meta">
+            <span className="typo-title text-primary">
+              /&nbsp;&nbsp;WAYBOT ROBOTICS
+            </span>
+            <span className="typo-body2 text-secondary">
+              Интерфейс управления автономным роботом
+            </span>
           </div>
+        </div>
 
-          <div className="info-section">
-            <p className="typo-body1 text-primary">
-            UX/UI-дизайнер с&nbsp;опытом работы с&nbsp;веб-сервисами, приложениями и&nbsp;корпоративными сайтами. Создаю интерфейсы, учитывая потребности пользователей, цели бизнеса и&nbsp;особенности разработки. Участвую в&nbsp;работе над&nbsp;продуктом от&nbsp;исследования и&nbsp;концепции до&nbsp;подготовки макетов к&nbsp;разработке. 
-            Открыт к&nbsp;фулл-тайм сотрудничеству и&nbsp;разовым проектам.
-            </p>
-            <a
-              href="https://t.me/Nikita_Fendrikov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline"
-            >
-              <ScrambleText className="typo-nav">TG: NIKITA_FENDRIKOV</ScrambleText>
-            </a>
+        {/* CRIA.TEAM — третий, лево */}
+        <div className="case-card align-left">
+          <ImageReveal>
+            <CaseCardLink href="/cria-team">
+              <img src={images.home.criateam} alt="CRIA.TEAM" className="w-full h-full object-cover" style={{ transform: "scale(1.38)", transformOrigin: "center 40%" }} />
+            </CaseCardLink>
+          </ImageReveal>
+          <div className="case-card-meta">
+            <span className="typo-title text-primary">
+              /&nbsp;&nbsp;CRIA.TEAM
+            </span>
+            <span className="typo-body2 text-secondary">
+              Дизайн и разработка сайта-портфолио
+            </span>
           </div>
+        </div>
 
+        {/* Описание */}
+        <div className="info-section">
+          <p className="typo-body1 text-primary">
+            UX/UI-дизайнер веб-сервисов, приложений и&nbsp;интерфейсов. Работаю над&nbsp;продуктом от&nbsp;исследования и&nbsp;концепции до&nbsp;передачи макетов в&nbsp;разработку, учитывая задачи бизнеса, потребности пользователей и&nbsp;технические стороны продукта. 
+            Открыт к&nbsp;full-time предложениям и&nbsp;проектному сотрудничеству.
+          </p>
+          <a
+            href="https://t.me/Nikita_Fendrikov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline"
+          >
+            <ScrambleText className="typo-nav">TG: NIKITA_FENDRIKOV</ScrambleText>
+          </a>
         </div>
 
       </div>

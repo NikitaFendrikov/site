@@ -1,10 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
-import { setLenis } from "@/lib/lenis-store";
+import { setLenis, getLenis } from "@/lib/lenis-store";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    getLenis()?.scrollTo(0, { immediate: true });
+  }, [pathname]);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,

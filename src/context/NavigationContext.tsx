@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useCallback } from "react";
 import { useRouter } from "next/navigation";
-
 const NavContext = createContext<{ navigateTo: (href: string) => void }>({ navigateTo: () => {} });
 
 export function NavigationProvider({ children }: { children: React.ReactNode }) {

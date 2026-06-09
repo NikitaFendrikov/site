@@ -72,6 +72,15 @@ html {
     width: 100%;
     align-self: stretch;
   }
+
+  .case-card.align-right {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .main-content > .info-section {
+    max-width: 100%;
+  }
   
   .case-page-grid {
     gap: 60px;
@@ -399,11 +408,22 @@ html {
   .main-content {
     @apply relative flex flex-col;
     padding: 20vh var(--px) 0 var(--px);
+    gap: var(--size-xl);
   }
 
   .case-card.align-left {
     @apply self-start;
     width: calc(51.33vw + 150px);
+  }
+
+  .case-card.align-right {
+    @apply self-end;
+    width: calc(51.33vw + 150px);
+  }
+
+  .main-content > .info-section {
+    margin-top: 0;
+    max-width: calc(100% - (51.33vw + 150px));
   }
 
   .case-info-grid {
