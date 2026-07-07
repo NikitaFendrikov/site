@@ -605,9 +605,10 @@ html {
 
   /* Production */
   .comms-prod-banners {
-    display: flex;
+    display: grid;
     gap: 44px;
     align-items: flex-start;
+    grid-template-columns: 1fr 1fr;
   }
 
   .comms-prod-banners > img {
@@ -638,8 +639,9 @@ html {
   }
 
   .comms-prod-stickers {
-    display: flex;
+    display: grid;
     gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .comms-prod-stickers > img {
@@ -687,7 +689,8 @@ html {
   }
 
   .comms-3d-pair {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
