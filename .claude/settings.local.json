@@ -16,7 +16,10 @@
       "Bash(curl -s \"https://kristianphoenix.com/\")",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "PowerShell(Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/4e6f2458-fb49-40f1-999b-13cc063d327c\" -OutFile \"$env:TEMP\\\\tab_anim.png\"; Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/f581ead3-cfb0-4490-8834-41034768d8aa\" -OutFile \"$env:TEMP\\\\tab_3d.png\"; Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/c07f5ebb-f4ad-4170-b06a-e5d0673fc2ab\" -OutFile \"$env:TEMP\\\\tab_pres.png\"; Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/325b4cc5-b31f-4a0a-bb18-5e02505a2a7d\" -OutFile \"$env:TEMP\\\\tab_sites.png\"; Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/e3902257-3f1a-459b-8be1-a37e24eb3f37\" -OutFile \"$env:TEMP\\\\tab_mobile.png\")",
+      "PowerShell(Invoke-WebRequest -Uri \"https://www.figma.com/api/mcp/asset/967ce157-58cc-456c-a712-00d41a9ddf11\" -OutFile \"$env:TEMP\\\\nav.png\")"
     ]
   }
 }

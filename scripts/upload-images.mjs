@@ -15,37 +15,45 @@ const client = createClient({
   useCdn: false,
 });
 
-function getImages(dir) {
+const IMAGE_EXTS = [".png", ".jpg", ".jpeg", ".webp"];
+const VIDEO_EXTS = [".mp4"];
+
+function getAssets(dir) {
   const results = [];
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) {
-      results.push(...getImages(full));
-    } else if ([".png", ".jpg", ".jpeg", ".webp"].includes(extname(entry).toLowerCase())) {
-      results.push(full);
+      results.push(...getAssets(full));
+    } else {
+      const ext = extname(entry).toLowerCase();
+      if (IMAGE_EXTS.includes(ext) || VIDEO_EXTS.includes(ext)) {
+        results.push(full);
+      }
     }
   }
   return results;
 }
 
 const imagesDir = join(ROOT, "public", "images");
-const images = getImages(imagesDir);
+const assets = getAssets(imagesDir);
 
-console.log(`Найдено ${images.length} изображений\n`);
+console.log(`Найдено ${assets.length} файлов\n`);
 
 const results = {};
 
-for (const imgPath of images) {
-  const relPath = relative(imagesDir, imgPath).replace(/\\/g, "/");
+for (const assetPath of assets) {
+  const relPath = relative(imagesDir, assetPath).replace(/\\/g, "/");
   const filename = relPath.replace(/\//g, "-");
+  const ext = extname(assetPath).toLowerCase();
+  const isVideo = VIDEO_EXTS.includes(ext);
 
   process.stdout.write(`Загружаю ${relPath}... `);
 
   try {
-    const buffer = readFileSync(imgPath);
-    const asset = await client.assets.upload("image", buffer, {
+    const buffer = readFileSync(assetPath);
+    const asset = await client.assets.upload(isVideo ? "file" : "image", buffer, {
       filename,
-      contentType: "image/png",
+      contentType: isVideo ? "video/mp4" : `image/${ext.slice(1)}`,
     });
     results[relPath] = asset._id;
     console.log(`✓ ${asset._id}`);

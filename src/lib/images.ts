@@ -1,4 +1,5 @@
 const BASE = "https://cdn.sanity.io/images/jp3kooxh/production";
+const FILES = "https://cdn.sanity.io/files/jp3kooxh/production";
 
 export const images = {
   home: {
@@ -34,5 +35,52 @@ export const images = {
     two:   `${BASE}/a6958c7bc359ce55d4dda2021a048f99aed9c66a-1920x1199.png?auto=format`,
     three: `${BASE}/7076a00286289d56f31a1dcd4945b21885ca5e88-1778x1112.png?auto=format`,
     four:  `${BASE}/6bd1f41f8f1e48acead57fb06e8749ccf2274d62-3840x2400.png?auto=format`,
+  },
+  communications: {
+    production: {
+      one:      `${BASE}/e31163b7d048f54736d11114a707c7ad7a6775e5-1956x4581.png?auto=format`,
+      two:      `${BASE}/4fad7cd6e6b00b2f399d4e13b680741c3265fc0f-1956x4581.png?auto=format`,
+      three:    `${BASE}/21e6695af8bd165bb15656af3c6e13f000dc193e-2001x2829.png?auto=format`,
+      four:     `${BASE}/65166c22da9131c10a9a217b9e4a9ad894883302-1836x1836.png?auto=format`,
+      five:     `${BASE}/456973eb99d8e1e477a6ae5c24d8f6cd7cec0708-1836x888.png?auto=format`,
+      six:      `${BASE}/012346dde5e8020099cc166eaa166a27e65f5bf6-1983x1122.png?auto=format`,
+      seven:    `${BASE}/12da08f9bb214284fff7ab42c7fd6ece12b97154-1983x1122.png?auto=format`,
+      eight:    `${BASE}/f8d6b9ce54b87fdbec5523543378d4e4e2d9b20a-1983x1121.png?auto=format`,
+      nine:     `${BASE}/7369a8be039584fc53c94bf30f2230e87216c4a2-1983x1121.png?auto=format`,
+      ten:      `${BASE}/cf29e34d263790980fc0810d8cebb254d592ea32-1983x1121.png?auto=format`,
+      eleven:   `${BASE}/aff92fab40661b65e5ad20a35d266c4abe2fe65c-1983x1121.png?auto=format`,
+      twelve:   `${BASE}/d18d1715896cdb675ae5e017e5f6d8eaa9ea9c14-1323x1323.png?auto=format`,
+      thirteen: `${BASE}/c224cf277e3e9ff7060b13a2939635945f6a785a-1326x1323.png?auto=format`,
+      fourteen: `${BASE}/2523d98d0022853815030a720a7113fe01902077-1323x1323.png?auto=format`,
+    },
+    animation: {
+      one:   `${FILES}/70f3c734fd7d0cd660f493d1cb8a8b7c4106cbeb.mp4`,
+      two:   `${FILES}/dc63b872e937e120206a63e04b7c4ad279794a8a.mp4`,
+      three: `${FILES}/b93e01bb3c1d1f733e7ef3cf6e040d65910ad01b.mp4`,
+      four:  `${FILES}/70bbf7b88a025054f0795c489e6d41188ada23d5.mp4`,
+    },
+    threeD: {
+      one:    `${BASE}/f7d721edfe3e4a5e00791afa193e5c4cb44e590d-4080x2295.png?auto=format`,
+      two:    `${BASE}/744f61efc7e55d9fed41adc8b6cc06e442192bc2-1320x1320.png?auto=format`,
+      three:  `${BASE}/889b949829dfea7deaf7479257eb6d4c66507bdd-1320x1320.png?auto=format`,
+      four:   `${BASE}/212717454ab7eae6a2bf8e828fcc7eaa9d459fa0-1320x1320.png?auto=format`,
+      five:   `${BASE}/ba7e73b1c57c6608c3c0b528e71e1ea7dfdc022b-1320x1320.png?auto=format`,
+      six:    `${BASE}/d39dabee2f5b62dbf423941b7e1774f73904134e-1320x1320.png?auto=format`,
+      seven:  `${BASE}/206d2eff43058b70944c9904fbbd33d80e7660f0-1320x1320.png?auto=format`,
+      eight:  `${BASE}/275901abdab12eeaa97c0cba3e36f40395baceb4-1320x1320.png?auto=format`,
+      nine:   `${BASE}/5f4227d609bd8db25397ecac4b8314f1e99a1c44-1320x1320.png?auto=format`,
+      ten:    `${BASE}/a3dd9ffdd73cb1057023b5254493b532e67d2dbc-2010x2010.png?auto=format`,
+      eleven: `${BASE}/69a480edcf44e5abeca7f5e689afd4aa61cd2d8c-2010x2010.png?auto=format`,
+    },
+    presentations: {
+      one:   `${BASE}/a466e226d016044077f075ff46d085febb34d5e5-2667x1668.png?auto=format`,
+      two:   `${BASE}/cffe4c77c1c96a7056532c43d5f9d9e5d07b9a7d-2667x1668.png?auto=format`,
+      three: `${BASE}/a90716947d5854fbff634912a7c626a142fb0eb8-2667x1668.png?auto=format`,
+    },
+    sites: {
+      one:   `${BASE}/c30274ebae41013c1a43a45acd3bf675627565b0-2667x1668.png?auto=format`,
+      two:   `${BASE}/f3767c22c63ee244877fb7dbdce50cd8f8cf9116-2667x1668.png?auto=format`,
+      three: `${BASE}/695d0fac308899f94155ad1129fcbd67abbf3ac5-2667x1668.png?auto=format`,
+    },
   },
 };
