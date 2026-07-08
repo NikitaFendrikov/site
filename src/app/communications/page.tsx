@@ -5,6 +5,7 @@ import Link from "next/link";
 import { images } from "@/lib/images";
 import ScrambleText from "@/components/ScrambleText";
 import ImageReveal from "@/components/ImageReveal";
+import ScrollHint from "@/components/ScrollHint";
 import { getLenis } from "@/lib/lenis-store";
 
 type Tab = "production" | "animation" | "3d" | "presentations" | "sites";
@@ -265,6 +266,10 @@ export default function CommunicationsPage() {
         {tab === "presentations" && <PresentationsTab />}
         {tab === "sites"         && <SitesTab />}
       </div>
+
+      {(tab === "presentations" || tab === "sites") && (
+        <ScrollHint targetSelector=".case-card" offset={-80} />
+      )}
     </main>
   );
 }
