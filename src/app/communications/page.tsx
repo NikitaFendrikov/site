@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { images } from "@/lib/images";
 import ScrambleText from "@/components/ScrambleText";
+import ImageReveal from "@/components/ImageReveal";
 import { getLenis } from "@/lib/lenis-store";
 
 type Tab = "production" | "animation" | "3d" | "presentations" | "sites";
@@ -127,21 +128,23 @@ function PresentationCard({ src, label, desc, href, align }: {
   const [hovered, setHovered] = useState(false);
   return (
     <div className={`case-card align-${align}`}>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="case-card-image"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <img src={src} alt={label} className="w-full h-full object-cover" />
-        <div className="card-overlay">
-          <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
-            ОТКРЫТЬ PDF
-          </ScrambleText>
-        </div>
-      </a>
+      <ImageReveal>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="case-card-image"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <img src={src} alt={label} className="w-full h-full object-cover" />
+          <div className="card-overlay">
+            <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
+              ОТКРЫТЬ PDF
+            </ScrambleText>
+          </div>
+        </a>
+      </ImageReveal>
       <div className="case-card-meta">
         <span className="typo-title text-primary">{label}</span>
         <span className="typo-body2 text-secondary">{desc}</span>
@@ -172,21 +175,23 @@ function SiteCard({ src, label, desc, href, align }: {
   const [hovered, setHovered] = useState(false);
   return (
     <div className={`case-card align-${align}`}>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="case-card-image"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <img src={src} alt={label} className="w-full h-full object-cover" />
-        <div className="card-overlay">
-          <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
-            ПЕРЕЙТИ НА САЙТ
-          </ScrambleText>
-        </div>
-      </a>
+      <ImageReveal>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="case-card-image"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <img src={src} alt={label} className="w-full h-full object-cover" />
+          <div className="card-overlay">
+            <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
+              ПЕРЕЙТИ НА САЙТ
+            </ScrambleText>
+          </div>
+        </a>
+      </ImageReveal>
       <div className="case-card-meta">
         <span className="typo-title text-primary">{label}</span>
         <span className="typo-body2 text-secondary">{desc}</span>
