@@ -49,9 +49,9 @@ export const images = {
       nine:     `${BASE}/7369a8be039584fc53c94bf30f2230e87216c4a2-1983x1121.png?auto=format`,
       ten:      `${BASE}/cf29e34d263790980fc0810d8cebb254d592ea32-1983x1121.png?auto=format`,
       eleven:   `${BASE}/aff92fab40661b65e5ad20a35d266c4abe2fe65c-1983x1121.png?auto=format`,
-      twelve:   `${BASE}/d18d1715896cdb675ae5e017e5f6d8eaa9ea9c14-1323x1323.png?auto=format`,
-      thirteen: `${BASE}/c224cf277e3e9ff7060b13a2939635945f6a785a-1326x1323.png?auto=format`,
-      fourteen: `${BASE}/2523d98d0022853815030a720a7113fe01902077-1323x1323.png?auto=format`,
+      twelve:   `${BASE}/7b5ee70e750fd8ce49f66bd4435359640b4a1f58-2000x2000.png?auto=format`,
+      thirteen: `${BASE}/fcd1f97d67200d8f38f158a0cbb91c6440185f51-2000x2000.png?auto=format`,
+      fourteen: `${BASE}/763ef1d761cd632a5d392387a392b0fdd35750f0-1000x1000.png?auto=format`,
     },
     animation: {
       one:   `${FILES}/70f3c734fd7d0cd660f493d1cb8a8b7c4106cbeb.mp4`,
