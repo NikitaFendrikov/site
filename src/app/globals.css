@@ -553,7 +553,7 @@ html {
     gap: 49px;
     background: var(--background);
     border-radius: 0 0 100px 100px;
-    padding: 10px 30px;
+    padding: 20px 30px;
     pointer-events: auto;
   }
 
