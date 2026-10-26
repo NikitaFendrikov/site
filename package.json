@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "publish:brand": "node scripts/publish.mjs brand",
+    "publish:product": "node scripts/publish.mjs product"
   },
   "dependencies": {
     "@sanity/client": "^7.22.0",
