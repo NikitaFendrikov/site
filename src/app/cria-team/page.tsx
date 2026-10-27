@@ -93,7 +93,7 @@ export default function CriaTeamPage() {
           <div className="case-sidebar-info">
             <p className="typo-body1 text-primary">
               CRIA&nbsp;— студия архитектурной 3D-визуализации, которая работает с&nbsp;бюро из&nbsp;Швеции, Норвегии, Дании и&nbsp;США.{" "}
-              Я&nbsp;полностью создал сайт-портфолио&nbsp;— от&nbsp;дизайна до&nbsp;кода.
+              Я&nbsp;полностью создал сайт-портфолио от&nbsp;дизайна до&nbsp;кода.
             </p>
             <a
               href="https://cria.team"
