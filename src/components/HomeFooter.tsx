@@ -7,7 +7,9 @@ export default function HomeFooter() {
   return (
     <footer className="home-footer">
       <p className="typo-body1 text-primary">
-        Открыт к&nbsp;full-time предложениям и&nbsp;проектному сотрудничеству.
+        Веду бренд от&nbsp;идеи до&nbsp;носителей: ищу ключевую метафору, собираю фирменный стиль
+        и&nbsp;сам довожу его до&nbsp;сайта, полиграфии и&nbsp;3D. Открыт к&nbsp;full-time предложениям
+        и&nbsp;проектному сотрудничеству.
       </p>
 
       <nav className="home-footer-links">
@@ -17,7 +19,7 @@ export default function HomeFooter() {
         <div className="nav-dot" />
         <a
           href="#top"
-          className="link-underline"
+          className="text-primary"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("top");

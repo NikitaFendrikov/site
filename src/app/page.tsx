@@ -23,6 +23,7 @@ const CASES: {
   tags: string[];
   href: string;
   external?: boolean;
+  label?: string; // текст на ховере, по умолчанию «СМОТРЕТЬ КЕЙС»
   src: string;
   imgStyle?: React.CSSProperties;
 }[] = [
@@ -39,6 +40,7 @@ const CASES: {
     tags: ["2026", "Айдентика", "Носители", "3D"],
     href: "/renders.pdf",
     external: true,
+    label: "СМОТРЕТЬ ПРЕЗЕНТАЦИЮ",
     src: images.communications.presentations.one,
   },
   {
@@ -109,7 +111,7 @@ export default function Home() {
             {CASES.map((c) => (
               <article key={c.name} className="case-tile">
                 <ImageReveal>
-                  <CaseCardLink href={c.href} external={c.external}>
+                  <CaseCardLink href={c.href} external={c.external} label={c.label}>
                     <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
                     <ul className="case-tile-tags">
                       {c.tags.map((tag) => (
