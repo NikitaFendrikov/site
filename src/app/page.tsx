@@ -160,7 +160,7 @@ export default function Home() {
           <PrintBento />
         </section>
 
-        <section id="presentations" className="home-section">
+        <section id="presentations" className="home-section home-section--cases">
           <SectionLabel className="typo-title">Презентации</SectionLabel>
           <PresentationsTab slash={false} />
         </section>

@@ -31,6 +31,7 @@ const GROUPS = [
   {
     id: "tc",
     cover: ["six"],
+    small: true,
     title: "Визитки Waybot Robotics",
     text: "Визитки для раздачи на выставках в фирменном стиле компании. Разработал макеты и подготовил их к печати.",
     items: [
@@ -154,7 +155,7 @@ export default function PrintBento() {
                     <button
                       key={area}
                       type="button"
-                      className="print-shot"
+                      className={`print-shot${"small" in g ? " print-shot--small" : ""}`}
                       aria-label={`Открыть: ${g.title}`}
                       onClick={() => setOpen(index)}
                     >
