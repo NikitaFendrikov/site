@@ -821,8 +821,7 @@ html {
 .topbar.is-floating .topbar-inner {
   margin: 12px var(--px) 0;
   padding: 12px 20px 14px;
-  border-color: var(--line);
-  border-radius: 16px;
+  border-color: transparent;
 }
 
 .topbar-logo {
