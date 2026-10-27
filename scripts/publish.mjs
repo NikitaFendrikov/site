@@ -1,6 +1,7 @@
 // Публикует версию сайта: кладёт содержимое ветки в main новым коммитом.
 // ONREZA деплоит main, поэтому сайт пересобирается сам после пуша.
-// Использование: node scripts/publish.mjs brand|product|<ветка> [--dry-run]
+// Использование: node scripts/publish.mjs brand|product|<ветка> [--dry-run] [--force]
+// --force — опубликовать заново ту же версию (перезапустить зависший деплой)
 import { execFileSync } from "child_process";
 
 const ALIASES = {
@@ -10,6 +11,7 @@ const ALIASES = {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
+const force = args.includes("--force");
 const name = args.find((a) => !a.startsWith("--"));
 
 if (!name) {
@@ -26,7 +28,7 @@ const tree = git("rev-parse", `${branch}^{tree}`);
 const source = git("rev-parse", "--short", branch);
 const main = git("rev-parse", "origin/main");
 
-if (git("rev-parse", "origin/main^{tree}") === tree) {
+if (!force && git("rev-parse", "origin/main^{tree}") === tree) {
   console.log(`На сайте уже ${branch} (${source}), публиковать нечего.`);
   process.exit(0);
 }
