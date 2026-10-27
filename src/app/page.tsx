@@ -20,7 +20,6 @@ function SectionLabel({ children, className = "typo-nav" }: { children: string; 
 /* Кейсы: плитка 2×2 */
 const CASES: {
   name: string;
-  kind: string;
   desc: string;
   tags: string[];
   href: string;
@@ -30,34 +29,30 @@ const CASES: {
 }[] = [
   {
     name: "AgonX",
-    kind: "платформа турниров по единоборствам",
-    desc: "Придумал название и бренд, перенёс айдентику в интерфейс и дизайн-систему",
-    tags: ["2025–2026", "Product & Brand Designer", "Нейминг, айдентика, UX/UI, дизайн-система"],
+    desc: "Платформа для турниров по единоборствам, через которую прошли 500+ атлетов и 550+ схваток. Придумал название и бренд с нуля, спроектировал интерфейс и дизайн-систему из 50+ компонентов на основе айдентики, сделал афиши турниров.",
+    tags: ["2025–2026", "Айдентика", "UI"],
     href: "/agonx",
     src: images.home.agonx,
   },
   {
     name: "Refined Renders",
-    kind: "студия 3D-визуализации",
-    desc: "Платформа бренда, ключевая идея «From rough to refined» и фирменный стиль",
-    tags: ["2026 — сейчас", "Brand Designer", "Нейминг, платформа бренда, айдентика"],
+    desc: "Студия 3D-визуализации промышленного оборудования для производителей станков и техники. Придумал название, сформировал платформу бренда и ключевую идею «From rough to refined», собрал фирменный стиль и адаптировал его на 8 носителей.",
+    tags: ["2026", "Айдентика", "Носители", "3D"],
     href: "/renders.pdf",
     external: true,
     src: images.communications.presentations.one,
   },
   {
     name: "Waybot Robotics",
-    kind: "роботы-уборщики",
-    desc: "Интерфейс управления автономным роботом",
-    tags: ["2025–2026", "Communications & UX/UI Designer", "UX/UI, 3D, полиграфия, сайт"],
+    desc: "Производитель автономных роботов-уборщиков, резидент «Сколково» и участник ПМЭФ. Спроектировал интерфейс робота, сделал корпоративный сайт, который принёс 50+ B2B-заявок, готовил полиграфию, 3D-рендеры и презентации.",
+    tags: ["2025–2026", "Сайт", "Полиграфия", "3D", "UI"],
     href: "/waybot",
     src: images.waybot.six,
   },
   {
     name: "CRIA",
-    kind: "студия архитектурной визуализации",
-    desc: "Дизайн и разработка сайта-портфолио",
-    tags: ["2024–2025", "Web Designer", "Структура, дизайн, вёрстка"],
+    desc: "Студия архитектурной 3D-визуализации, которая работает с бюро из Швеции, Норвегии, Дании и США. Разработал структуру и дизайн сайта-портфолио и сам его сверстал — сайт привёл студии 3 новых постоянных клиента.",
+    tags: ["2024–2025", "Сайт", "Вёрстка"],
     href: "/cria-team",
     src: images.home.criaSite,
   },
@@ -104,9 +99,7 @@ export default function Home() {
                 </ImageReveal>
 
                 <div className="case-tile-head">
-                  <h3 className="case-tile-title">
-                    {c.name} <span className="text-secondary">{c.kind}</span>
-                  </h3>
+                  <h3 className="case-tile-title">{c.name}</h3>
                   <p className="typo-body2 text-primary">{c.desc}</p>
                 </div>
               </article>
