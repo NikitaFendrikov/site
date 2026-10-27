@@ -111,7 +111,12 @@ export default function Home() {
             {CASES.map((c) => (
               <article key={c.name} className="case-tile">
                 <ImageReveal>
-                  <CaseCardLink href={c.href} external={c.external} label={c.label}>
+                  <CaseCardLink
+                    href={c.href}
+                    external={c.external}
+                    label={c.label}
+                    labelClassName={c.label ? "typo-nav site-overlay-text" : undefined}
+                  >
                     <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
                     <ul className="case-tile-tags">
                       {c.tags.map((tag) => (

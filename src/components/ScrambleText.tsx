@@ -9,7 +9,7 @@ export default function ScrambleText({
   className,
   playing,
   style,
-  framesPerChar = 3,
+  framesPerChar = 1,
 }: {
   children: string;
   className?: string;

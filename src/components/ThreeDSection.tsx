@@ -10,7 +10,7 @@ export default function ThreeDSection() {
   const ribbon = [d.two, d.three, d.four, d.five, d.six, d.seven, d.eight, d.nine];
 
   const track = useRef<HTMLDivElement>(null);
-  const drag = useRef<{ x: number; left: number } | null>(null);
+  const drag = useRef<{ x: number; left: number; lastX: number; lastT: number; v: number } | null>(null);
   const target = useRef(0);
   const frame = useRef<number | null>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
@@ -88,24 +88,41 @@ export default function ThreeDSection() {
     };
   }, [glideTo, updateEdges]);
 
-  // Перетаскивание мышью
+  // Перетаскивание мышью; после отпускания лента докатывается по инерции
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !track.current) return;
     stopGlide();
-    drag.current = { x: e.clientX, left: track.current.scrollLeft };
+    const now = performance.now();
+    drag.current = { x: e.clientX, left: track.current.scrollLeft, lastX: e.clientX, lastT: now, v: 0 };
     track.current.setPointerCapture(e.pointerId);
     track.current.classList.add("is-dragging");
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!drag.current || !track.current) return;
-    track.current.scrollLeft = drag.current.left - (e.clientX - drag.current.x);
+    const g = drag.current;
+    if (!g || !track.current) return;
+    track.current.scrollLeft = g.left - (e.clientX - g.x);
+
+    // Скорость пальца/мыши, сглаженная по последним движениям (px/мс)
+    const now = performance.now();
+    const dt = now - g.lastT;
+    if (dt > 0) {
+      g.v = 0.7 * ((g.lastX - e.clientX) / dt) + 0.3 * g.v;
+      g.lastX = e.clientX;
+      g.lastT = now;
+    }
   };
 
   const onPointerUp = () => {
-    if (!drag.current || !track.current) return;
+    const g = drag.current;
+    const el = track.current;
+    if (!g || !el) return;
     drag.current = null;
-    track.current.classList.remove("is-dragging");
+    el.classList.remove("is-dragging");
+
+    // Если мышь остановили перед отпусканием — инерции нет
+    const idle = performance.now() - g.lastT > 80;
+    if (!idle && Math.abs(g.v) > 0.05) glideTo(el.scrollLeft + g.v * 320);
   };
 
   return (
