@@ -53,6 +53,8 @@ export const images = {
       twelve:   `${BASE}/7b5ee70e750fd8ce49f66bd4435359640b4a1f58-2000x2000.png?auto=format`,
       thirteen: `${BASE}/fcd1f97d67200d8f38f158a0cbb91c6440185f51-2000x2000.png?auto=format`,
       fourteen: `${BASE}/763ef1d761cd632a5d392387a392b0fdd35750f0-1000x1000.png?auto=format`,
+      // Все шесть визиток (3 варианта × лицо/оборот) одним макетом
+      cards:    `${BASE}/fd24f018cbc75c66f934e5552dda2860cd33dca3-2400x1500.png?auto=format`,
     },
     animation: {
       one:   `${FILES}/70f3c734fd7d0cd660f493d1cb8a8b7c4106cbeb.mp4`,
