@@ -147,7 +147,7 @@ export function PresentationsTab({ slash = true }: { slash?: boolean } = {}) {
   const items = [
     { src: p.one,   label: "REFINED RENDERS", desc: "Концепт бренда для студии 3D-визуализации",       href: "/renders.pdf",       align: "left"  },
     { src: p.two,   label: "WAYBOT ROBOTICS", desc: "Презентация для зарубежных инвесторов",           href: "/waybot.pdf",        align: "right" },
-    { src: p.three, label: "WAYBOT ROBOTICS", desc: "Презентация для спикеров по шаблону мероприятий", href: "/cleaning-club.pdf", align: "left"  },
+    { src: p.three, label: "WAYBOT ROBOTICS", desc: "Презентация для спикеров по шаблону мероприятия", href: "/cleaning-club.pdf", align: "left"  },
   ];
   return (
     <div className="comms-tab-content">

@@ -7,9 +7,9 @@ import SiteHeader from "@/components/SiteHeader";
 import Hero from "@/components/Hero";
 import PrintBento from "@/components/PrintBento";
 import HomeScrollHint from "@/components/HomeScrollHint";
+import ThreeDSection from "@/components/ThreeDSection";
 import {
   AnimationTab,
-  ThreeDTab,
   PresentationsTab,
 } from "@/components/CommsSections";
 
@@ -165,13 +165,13 @@ export default function Home() {
           <PresentationsTab slash={false} />
         </section>
 
-        <section id="three-d" className="home-section">
-          <SectionLabel>3D</SectionLabel>
-          <ThreeDTab />
+        <section id="three-d" className="home-section home-section--cases">
+          <SectionLabel className="typo-title">3D</SectionLabel>
+          <ThreeDSection />
         </section>
 
-        <section id="animation" className="home-section">
-          <SectionLabel>Анимация</SectionLabel>
+        <section id="animation" className="home-section home-section--cases">
+          <SectionLabel className="typo-title">Анимация</SectionLabel>
           <AnimationTab />
         </section>
 
