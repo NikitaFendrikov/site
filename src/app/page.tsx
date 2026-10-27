@@ -129,7 +129,7 @@ export default function Home() {
         </section>
 
         <section id="sites" className="home-section home-section--cases">
-          <SectionLabel>Сайты</SectionLabel>
+          <SectionLabel className="typo-title">Сайты</SectionLabel>
 
           <div className="cases-grid">
             {SITES.map((s) => (
