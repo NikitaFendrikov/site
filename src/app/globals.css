@@ -1098,6 +1098,203 @@ html {
   cursor: default;
 }
 
+/* Печатная продукция: мозаика-бенто */
+.bento {
+  --bento-gap: var(--size-md);
+  --bento-col: calc((100vw - 2 * var(--px) - 3 * var(--bento-gap)) / 4);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(calc(var(--bento-col) * 0.75), auto);
+  grid-template-areas:
+    "one   two   three    three"
+    "one   two   three    three"
+    "one   two   four     five"
+    "tb    tb    tp       tp"
+    "tc    tc    six      seven"
+    "eight nine  ten      eleven"
+    "ts    twelve thirteen fourteen";
+  gap: var(--bento-gap);
+}
+
+.bento-tile {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.bento-inner {
+  flex: 1;
+  min-width: 0;
+  transition: opacity 0.4s ease, transform 0.5s var(--ease-out);
+}
+
+.bento-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: var(--card);
+  cursor: zoom-in;
+}
+
+.bento-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bento-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: var(--card);
+}
+
+/* Ховер: плитка чуть увеличивается, остальные притухают */
+.bento:has(.bento-media:hover) .bento-inner {
+  opacity: 0.45;
+}
+
+.bento .bento-media:hover {
+  opacity: 1;
+  transform: scale(1.03);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .bento {
+    --bento-col: calc((100vw - 2 * var(--px) - var(--bento-gap)) / 2);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(var(--bento-col), auto);
+    grid-template-areas:
+      "one      two"
+      "one      two"
+      "tb       tb"
+      "three    three"
+      "three    three"
+      "four     five"
+      "tp       tp"
+      "tc       tc"
+      "six      seven"
+      "eight    nine"
+      "ten      eleven"
+      "ts       ts"
+      "twelve   twelve"
+      "twelve   twelve"
+      "thirteen fourteen";
+  }
+
+  /* Текстовые плитки на мобилке — по высоте текста */
+  .bento-text {
+    padding: 16px;
+  }
+}
+
+/* Полноэкранный просмотр */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 80px;
+  background: rgba(0, 0, 0, 0.92);
+  color: #ffffff;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: default;
+}
+
+.lightbox-counter,
+.lightbox-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--body2-size);
+  font-weight: 500;
+  letter-spacing: var(--body2-ls);
+  white-space: nowrap;
+}
+
+.lightbox-counter {
+  top: 24px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-caption {
+  bottom: 24px;
+}
+
+.lightbox-close,
+.lightbox-arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+  opacity: 1;
+}
+
+.lightbox-close {
+  top: 12px;
+  right: 16px;
+}
+
+.lightbox-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+}
+
+.lightbox-prev {
+  left: 16px;
+}
+
+.lightbox-next {
+  right: 16px;
+}
+
+@media (max-width: 767px) {
+  .lightbox {
+    padding: 64px 12px 120px;
+  }
+
+  .lightbox-arrow {
+    top: auto;
+    bottom: 12px;
+    transform: none;
+  }
+
+  .lightbox-caption {
+    bottom: 76px;
+  }
+}
+
 /* Кейсы: плитка 2×2 */
 .home-section--cases {
   gap: var(--size-lg);

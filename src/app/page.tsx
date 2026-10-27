@@ -5,8 +5,8 @@ import CaseCardLink from "@/components/CaseCardLink";
 import ImageReveal from "@/components/ImageReveal";
 import SiteHeader from "@/components/SiteHeader";
 import Hero from "@/components/Hero";
+import PrintBento from "@/components/PrintBento";
 import {
-  ProductionTab,
   AnimationTab,
   ThreeDTab,
   PresentationsTab,
@@ -154,9 +154,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="print" className="home-section">
-          <SectionLabel>Печатная продукция</SectionLabel>
-          <ProductionTab />
+        <section id="print" className="home-section home-section--cases">
+          <SectionLabel className="typo-title">Печатная продукция</SectionLabel>
+          <PrintBento />
         </section>
 
         <section id="presentations" className="home-section">
