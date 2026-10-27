@@ -11,17 +11,9 @@ export default function ThreeDSection() {
 
   const track = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; left: number } | null>(null);
-  const wheelLock = useRef(false);
+  const target = useRef(0);
+  const frame = useRef<number | null>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
-
-  // Шаг ленты — ширина карточки плюс отступ
-  const step = useCallback((dir: 1 | -1) => {
-    const el = track.current;
-    const card = el?.querySelector<HTMLElement>(".three-d-card");
-    if (!el || !card) return;
-    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
-    el.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: "smooth" });
-  }, []);
 
   const updateEdges = useCallback(() => {
     const el = track.current;
@@ -32,7 +24,48 @@ export default function ThreeDSection() {
     });
   }, []);
 
-  // Колесо с Shift листает ленту по одной карточке, не трогая страницу
+  // Плавная прокрутка без привязки к карточкам: позиция догоняет цель,
+  // цель упирается в края ленты
+  const glideTo = useCallback((left: number) => {
+    const el = track.current;
+    if (!el) return;
+    target.current = Math.max(0, Math.min(left, el.scrollWidth - el.clientWidth));
+
+    if (frame.current !== null) return;
+    // Позицию считаем дробной: scrollLeft округляется до пикселя и иначе застревает у цели
+    let pos = el.scrollLeft;
+    const tick = () => {
+      const diff = target.current - pos;
+      if (Math.abs(diff) < 0.5) {
+        el.scrollLeft = target.current;
+        frame.current = null;
+        return;
+      }
+      pos += diff * 0.14;
+      el.scrollLeft = pos;
+      frame.current = requestAnimationFrame(tick);
+    };
+    frame.current = requestAnimationFrame(tick);
+  }, []);
+
+  const stopGlide = () => {
+    if (frame.current !== null) cancelAnimationFrame(frame.current);
+    frame.current = null;
+  };
+
+  // От текущей цели, если лента ещё едет, иначе от текущей позиции
+  const base = () => (frame.current !== null ? target.current : track.current?.scrollLeft ?? 0);
+
+  // Стрелки сдвигают на ширину одной карточки
+  const step = (dir: 1 | -1) => {
+    const el = track.current;
+    const card = el?.querySelector<HTMLElement>(".three-d-card");
+    if (!el || !card) return;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    glideTo(base() + dir * (card.offsetWidth + gap));
+  };
+
+  // Колесо с Shift двигает ленту, не трогая страницу
   useEffect(() => {
     const el = track.current;
     if (!el) return;
@@ -41,12 +74,8 @@ export default function ThreeDSection() {
       if (!e.shiftKey) return;
       e.preventDefault();
       e.stopPropagation();
-      if (wheelLock.current) return;
       const delta = e.deltaY || e.deltaX;
-      if (!delta) return;
-      wheelLock.current = true;
-      step(delta > 0 ? 1 : -1);
-      setTimeout(() => { wheelLock.current = false; }, 350);
+      if (delta) glideTo(base() + delta * 1.5);
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
@@ -55,12 +84,14 @@ export default function ThreeDSection() {
     return () => {
       el.removeEventListener("wheel", onWheel);
       window.removeEventListener("resize", updateEdges);
+      stopGlide();
     };
-  }, [step, updateEdges]);
+  }, [glideTo, updateEdges]);
 
-  // Перетаскивание мышью; после отпускания — к ближайшей карточке
+  // Перетаскивание мышью
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !track.current) return;
+    stopGlide();
     drag.current = { x: e.clientX, left: track.current.scrollLeft };
     track.current.setPointerCapture(e.pointerId);
     track.current.classList.add("is-dragging");
@@ -72,47 +103,19 @@ export default function ThreeDSection() {
   };
 
   const onPointerUp = () => {
-    const el = track.current;
-    if (!drag.current || !el) return;
+    if (!drag.current || !track.current) return;
     drag.current = null;
-
-    const cards = Array.from(el.querySelectorAll<HTMLElement>(".three-d-card"));
-    const nearest = cards.reduce((best, c) =>
-      Math.abs(c.offsetLeft - el.scrollLeft) < Math.abs(best.offsetLeft - el.scrollLeft) ? c : best
-    );
-    el.scrollTo({ left: nearest.offsetLeft, behavior: "smooth" });
-    setTimeout(() => el.classList.remove("is-dragging"), 400);
+    track.current.classList.remove("is-dragging");
   };
 
   return (
     <div className="comms-tab-content">
       <div className="comms-group">
         <img src={d.one} alt="" className="three-d-fit block" />
-        <p className="typo-body1 text-primary">Иллюстрация для hero-блока страницы одной из моделей робота уборщика.</p>
+        <p className="typo-body1 text-primary text-center">Иллюстрация для hero-блока страницы одной из моделей робота уборщика.</p>
       </div>
 
       <div className="comms-group">
-        <div className="three-d-ribbon-nav">
-          <button
-            type="button"
-            className="three-d-arrow"
-            aria-label="Предыдущие иллюстрации"
-            disabled={edges.start}
-            onClick={() => step(-1)}
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            className="three-d-arrow"
-            aria-label="Следующие иллюстрации"
-            disabled={edges.end}
-            onClick={() => step(1)}
-          >
-            →
-          </button>
-        </div>
-
         <div
           ref={track}
           className="three-d-ribbon"
@@ -129,7 +132,29 @@ export default function ThreeDSection() {
           ))}
         </div>
 
-        <p className="typo-body1 text-primary">Иллюстрации для страниц расходных материалов.</p>
+        <div className="three-d-ribbon-foot">
+          <p className="typo-body1 text-primary">Иллюстрации для страниц расходных материалов.</p>
+          <div className="three-d-ribbon-nav">
+            <button
+              type="button"
+              className="three-d-arrow"
+              aria-label="Прокрутить ленту влево"
+              disabled={edges.start}
+              onClick={() => step(-1)}
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              className="three-d-arrow"
+              aria-label="Прокрутить ленту вправо"
+              disabled={edges.end}
+              onClick={() => step(1)}
+            >
+              →
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="comms-group">

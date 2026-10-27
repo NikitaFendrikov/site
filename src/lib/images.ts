@@ -58,7 +58,7 @@ export const images = {
     },
     animation: {
       one:   `${FILES}/70f3c734fd7d0cd660f493d1cb8a8b7c4106cbeb.mp4`,
-      two:   `${FILES}/dc63b872e937e120206a63e04b7c4ad279794a8a.mp4`,
+      two:   `${FILES}/7faf5dca03e67cc34ffcbbaadd1854480d592b2f.mp4`, // лоадер, чёрный хвост обрезан до ~1 с
       three: `${FILES}/b93e01bb3c1d1f733e7ef3cf6e040d65910ad01b.mp4`,
       four:  `${FILES}/70bbf7b88a025054f0795c489e6d41188ada23d5.mp4`,
     },

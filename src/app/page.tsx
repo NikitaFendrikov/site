@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { images } from "@/lib/images";
-import ScrambleText from "@/components/ScrambleText";
 import CaseCardLink from "@/components/CaseCardLink";
 import ImageReveal from "@/components/ImageReveal";
 import SiteHeader from "@/components/SiteHeader";
@@ -8,6 +6,7 @@ import Hero from "@/components/Hero";
 import PrintBento from "@/components/PrintBento";
 import HomeScrollHint from "@/components/HomeScrollHint";
 import ThreeDSection from "@/components/ThreeDSection";
+import HomeFooter from "@/components/HomeFooter";
 import {
   AnimationTab,
   PresentationsTab,
@@ -179,21 +178,7 @@ export default function Home() {
 
       <HomeScrollHint />
 
-      {/* Футер */}
-      <nav className="site-nav">
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-underline"
-        >
-          <ScrambleText className="typo-nav">РЕЗЮМЕ</ScrambleText>
-        </a>
-        <div className="nav-dot" />
-        <Link href="/sandbox">
-          <ScrambleText className="typo-nav">ПЕСОЧНИЦА</ScrambleText>
-        </Link>
-      </nav>
+      <HomeFooter />
     </main>
   );
 }
