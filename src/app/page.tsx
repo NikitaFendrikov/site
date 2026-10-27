@@ -51,7 +51,7 @@ const CASES: {
     desc: "Интерфейс управления автономным роботом",
     tags: ["2025–2026", "Communications & UX/UI Designer", "UX/UI, 3D, полиграфия, сайт"],
     href: "/waybot",
-    src: images.home.waybot,
+    src: images.waybot.six,
   },
   {
     name: "CRIA",
@@ -59,8 +59,7 @@ const CASES: {
     desc: "Дизайн и разработка сайта-портфолио",
     tags: ["2024–2025", "Web Designer", "Структура, дизайн, вёрстка"],
     href: "/cria-team",
-    src: images.home.criateam,
-    imgStyle: { transform: "scale(1.38)", transformOrigin: "center 40%" },
+    src: images.home.criaSite,
   },
 ];
 

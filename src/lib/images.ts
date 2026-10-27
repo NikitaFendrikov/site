@@ -6,6 +6,8 @@ export const images = {
     criateam: `${BASE}/4887b8c658d14e1cf49c282e323c850a346dec91-4000x2250.jpg?auto=format`,
     agonx:    `${BASE}/3e791c680ee3f81c340473dc7fc8698283bf1272-1440x901.png?auto=format`,
     waybot:   `${BASE}/29fb9c61054f0379861a5eeb03db42f8af587b70-1680x945.png?auto=format`,
+    // Скриншот сайта cria.team, 16:10 — пока локальный файл, не в Sanity
+    criaSite: "/images/home/cria-site.png",
   },
   criateam: {
     one:   `${BASE}/e3a6e3fcf6080bb40adf49f66b4d65d5a52042e9-1450x797.png?auto=format`,
