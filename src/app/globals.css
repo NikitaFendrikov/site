@@ -1067,6 +1067,12 @@ html {
   border: 0;
   color: var(--primary);
   cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.hero-scroll.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nowrap {
@@ -1085,7 +1091,6 @@ html {
   display: flex;
   flex-direction: column;
   gap: var(--size-xl);
-  scroll-margin-top: 100px;
 }
 
 .home-section-label {
@@ -1094,11 +1099,15 @@ html {
 }
 
 /* Кейсы: плитка 2×2 */
+.home-section--cases {
+  gap: var(--size-lg);
+}
+
 .cases-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: var(--size-lg);
-  row-gap: var(--size-xl);
+  row-gap: var(--size-lg);
 }
 
 .case-tile {
@@ -1127,17 +1136,19 @@ html {
   font-weight: 500;
 }
 
+/* Теги лежат внутри картинки, в левом верхнем углу */
 .case-tile-tags {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  max-width: calc(100% - 30px);
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  align-self: flex-start;
-  gap: 6px 16px;
+  align-items: flex-start;
+  gap: 4px;
   margin: 0;
-  padding: 7px 14px;
+  padding: 0;
   list-style: none;
-  background: var(--card);
-  border-radius: 14px;
   font-family: var(--font-manrope), sans-serif;
   font-size: var(--body2-size);
   font-weight: 500;
@@ -1150,6 +1161,8 @@ html {
   display: flex;
   align-items: center;
   gap: 7px;
+  padding: 6px 12px;
+  background: var(--card);
 }
 
 .case-tile-tags li::before {
@@ -1167,7 +1180,16 @@ html {
 @media (max-width: 767px) {
   .cases-grid {
     grid-template-columns: 1fr;
-    row-gap: 60px;
+  }
+
+  .case-tile-tags {
+    top: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .case-tile-tags li {
+    padding: 5px 9px;
   }
 }
 
@@ -1178,6 +1200,10 @@ html {
 
   .home-section {
     gap: 60px;
+  }
+
+  .home-section--cases {
+    gap: var(--size-lg);
   }
 
   .home-section .comms-prod-banners,

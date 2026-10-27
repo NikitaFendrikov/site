@@ -87,30 +87,29 @@ export default function Home() {
       {/* Разделы — якоря навигации в шапке */}
       <div className="home-sections">
 
-        <section id="cases" className="home-section">
+        <section id="cases" className="home-section home-section--cases">
           <SectionLabel className="typo-title">Кейсы</SectionLabel>
 
           <div className="cases-grid">
             {CASES.map((c) => (
               <article key={c.name} className="case-tile">
+                <ImageReveal>
+                  <CaseCardLink href={c.href} external={c.external}>
+                    <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
+                    <ul className="case-tile-tags">
+                      {c.tags.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                  </CaseCardLink>
+                </ImageReveal>
+
                 <div className="case-tile-head">
                   <h3 className="case-tile-title">
                     {c.name} <span className="text-secondary">{c.kind}</span>
                   </h3>
                   <p className="typo-body2 text-primary">{c.desc}</p>
                 </div>
-
-                <ul className="case-tile-tags">
-                  {c.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-
-                <ImageReveal>
-                  <CaseCardLink href={c.href} external={c.external} labelClassName="typo-title">
-                    <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
-                  </CaseCardLink>
-                </ImageReveal>
               </article>
             ))}
           </div>
