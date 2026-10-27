@@ -7,10 +7,11 @@ import ImageReveal from "./ImageReveal";
 
 const p = images.communications.production;
 
-/* Группы работ: текстовая плитка + картинки. area — имя ячейки в grid-template-areas */
+/* Группы работ. В плитке показываем cover, в просмотре листаются все items */
 const GROUPS = [
   {
     id: "tb",
+    cover: ["one"],
     title: "Выставочные баннеры",
     text: "Баннеры для стендов Waybot Robotics на выставках. Сам сделал 3D-рендеры роботов и подготовил макеты к печати в большом формате.",
     items: [
@@ -20,6 +21,7 @@ const GROUPS = [
   },
   {
     id: "tp",
+    cover: ["three"],
     title: "Афиша турнира AgonX",
     text: "Афиша турнира по единоборствам в нескольких форматах для печати и соцсетей. Ключевой визуал собран с применением AI-генерации.",
     items: [
@@ -30,6 +32,7 @@ const GROUPS = [
   },
   {
     id: "tc",
+    cover: ["six"],
     title: "Визитки Waybot Robotics",
     text: "Визитки для раздачи на выставках в фирменном стиле компании. Разработал макеты и подготовил их к печати.",
     items: [
@@ -43,6 +46,7 @@ const GROUPS = [
   },
   {
     id: "ts",
+    cover: ["twelve", "thirteen"],
     title: "Наклейки для роботов",
     text: "Наклейки для корпусов роботов Waybot Robotics. Разработал макеты и подготовил их к печати.",
     items: [
@@ -55,12 +59,6 @@ const GROUPS = [
 
 /* Все 14 работ подряд — для листания в просмотре */
 const SLIDES = GROUPS.flatMap((g) => g.items.map((item) => ({ ...item, group: g.title })));
-
-/* Порядок плиток в разметке: группа за группой, текст после картинок */
-const TILES = GROUPS.flatMap((g) => [
-  ...g.items.map((item) => ({ kind: "image" as const, area: item.area, src: item.src, group: g.title })),
-  { kind: "text" as const, area: g.id, title: g.title, text: g.text },
-]);
 
 function Lightbox({ index, onClose, onStep }: {
   index: number;
@@ -147,30 +145,33 @@ export default function PrintBento() {
 
   return (
     <>
-      <div className="bento">
-        {TILES.map((tile, i) => (
-          <ImageReveal
-            key={tile.area}
-            className="bento-tile"
-            style={{ gridArea: tile.area }}
-            delay={(i % 4) * 0.08}
-          >
-            {tile.kind === "image" ? (
-              <button
-                type="button"
-                className="bento-inner bento-media"
-                aria-label={`Открыть: ${tile.group}`}
-                onClick={() => setOpen(SLIDES.findIndex((s) => s.area === tile.area))}
-              >
-                <img src={tile.src} alt={tile.group} />
-              </button>
-            ) : (
-              <div className="bento-inner bento-text">
-                <h3 className="case-tile-title">{tile.title}</h3>
-                <p className="typo-body2 text-primary">{tile.text}</p>
+      <div className="cases-grid">
+        {GROUPS.map((g) => (
+          <article key={g.id} className="case-tile">
+            <ImageReveal>
+              <div className="print-frame">
+                {g.cover.map((area) => {
+                  const index = SLIDES.findIndex((s) => s.area === area);
+                  return (
+                    <button
+                      key={area}
+                      type="button"
+                      className="print-shot"
+                      aria-label={`Открыть: ${g.title}`}
+                      onClick={() => setOpen(index)}
+                    >
+                      <img src={SLIDES[index].src} alt={g.title} />
+                    </button>
+                  );
+                })}
               </div>
-            )}
-          </ImageReveal>
+            </ImageReveal>
+
+            <div className="case-tile-head">
+              <h3 className="case-tile-title">{g.title}</h3>
+              <p className="typo-body2 text-primary">{g.text}</p>
+            </div>
+          </article>
         ))}
       </div>
 
