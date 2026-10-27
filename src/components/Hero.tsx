@@ -35,7 +35,7 @@ export default function Hero() {
         </p>
 
         <p className="hero-note" style={{ opacity: play ? 1 : 0 }}>
-          <ScrambleText className="typo-nav" playing={play}>
+          <ScrambleText className="typo-nav" playing={play} framesPerChar={1}>
             Этот сайт собран на Next.js с помощью Claude Code
           </ScrambleText>
         </p>
