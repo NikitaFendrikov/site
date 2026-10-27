@@ -40,7 +40,7 @@ const cards = [
   {
     number: "06",
     title: "Результат",
-    text: "Интерфейс запущен на&nbsp;реальных роботах. Операторы самостоятельно запускают уборку и&nbsp;настраивают сценарии без&nbsp;помощи технической команды.",
+    text: "Интерфейс запущен на&nbsp;реальных роботах. Операторы сами запускают уборку и&nbsp;настраивают сценарии&nbsp;— обращений в&nbsp;техподдержку стало на&nbsp;80% меньше.",
     photo: images.waybot.six,
   },
 ];
@@ -104,19 +104,24 @@ export default function WaybotPage() {
         <aside className="case-sidebar">
           <div className="case-sidebar-info">
             <p className="typo-body1 text-primary">
-              Waybot Robotics&nbsp;— производитель автономных роботов-уборщиков для&nbsp;коммерческих помещений.{" "}
-              Я спроектировал интерфейс управления роботом для&nbsp;технически неподкованных пользователей.
+              Waybot Robotics&nbsp;— производитель автономных роботов-уборщиков, резидент «Сколково» и&nbsp;участник ПМЭФ.{" "}
+              Я&nbsp;спроектировал интерфейс управления роботом для&nbsp;операторов без&nbsp;технической подготовки, а&nbsp;также вёл для&nbsp;компании сайт, полиграфию и&nbsp;3D.
             </p>
           </div>
 
           <div className="metrics-box">
             <div className="metrics-header">
               <div className="nav-dot" />
-              <span className="typo-title text-primary">АВТОНОМНАЯ НАСТРОЙКА</span>
+              <span className="typo-title text-primary">МЕТРИКИ</span>
             </div>
             <div className="metrics-cells">
               <div className="metrics-cell">
-                <span className="typo-body2 text-secondary">Операторы самостоятельно настраивают сценарии уборки без&nbsp;помощи технической команды.</span>
+                <span className="typo-metrics text-primary">50+ ↑</span>
+                <span className="typo-body2 text-secondary">B2B-заявок с&nbsp;сайта</span>
+              </div>
+              <div className="metrics-cell">
+                <span className="typo-metrics text-primary">16 ↑</span>
+                <span className="typo-body2 text-secondary">макетов для&nbsp;печати</span>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ export const images = {
     criateam: `${BASE}/4887b8c658d14e1cf49c282e323c850a346dec91-4000x2250.jpg?auto=format`,
     agonx:    `${BASE}/3e791c680ee3f81c340473dc7fc8698283bf1272-1440x901.png?auto=format`,
     waybot:   `${BASE}/29fb9c61054f0379861a5eeb03db42f8af587b70-1680x945.png?auto=format`,
+    criaSite: `${BASE}/e702ae9abadfa35f0f05be5a0823bcbbfba14a43-1920x1200.png?auto=format`,
   },
   criateam: {
     one:   `${BASE}/e3a6e3fcf6080bb40adf49f66b4d65d5a52042e9-1450x797.png?auto=format`,
@@ -52,10 +53,12 @@ export const images = {
       twelve:   `${BASE}/7b5ee70e750fd8ce49f66bd4435359640b4a1f58-2000x2000.png?auto=format`,
       thirteen: `${BASE}/fcd1f97d67200d8f38f158a0cbb91c6440185f51-2000x2000.png?auto=format`,
       fourteen: `${BASE}/763ef1d761cd632a5d392387a392b0fdd35750f0-1000x1000.png?auto=format`,
+      // Все шесть визиток (3 варианта × лицо/оборот) одним макетом
+      cards:    `${BASE}/fd24f018cbc75c66f934e5552dda2860cd33dca3-2400x1500.png?auto=format`,
     },
     animation: {
       one:   `${FILES}/70f3c734fd7d0cd660f493d1cb8a8b7c4106cbeb.mp4`,
-      two:   `${FILES}/dc63b872e937e120206a63e04b7c4ad279794a8a.mp4`,
+      two:   `${FILES}/7faf5dca03e67cc34ffcbbaadd1854480d592b2f.mp4`, // лоадер, чёрный хвост обрезан до ~1 с
       three: `${FILES}/b93e01bb3c1d1f733e7ef3cf6e040d65910ad01b.mp4`,
       four:  `${FILES}/70bbf7b88a025054f0795c489e6d41188ada23d5.mp4`,
     },

@@ -890,33 +890,40 @@ html {
 
 .topbar-burger {
   display: none;
+  position: relative;
   justify-self: end;
   width: 40px;
   height: 40px;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 7px;
   padding: 0;
   background: none;
   border: 0;
   cursor: pointer;
 }
 
+/* Полоски 2px на целых пикселях: верхняя 15–17, нижняя 23–25, центр крестика — 19 */
 .topbar-burger span {
-  display: block;
+  position: absolute;
+  right: 0;
   width: 26px;
-  height: 1.5px;
+  height: 2px;
   background: var(--primary);
   transition: transform 0.4s var(--ease-out);
 }
 
+.topbar-burger span:first-child {
+  top: 15px;
+}
+
+.topbar-burger span:last-child {
+  top: 23px;
+}
+
 .topbar.is-menu-open .topbar-burger span:first-child {
-  transform: translateY(4.25px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg);
 }
 
 .topbar.is-menu-open .topbar-burger span:last-child {
-  transform: translateY(-4.25px) rotate(-45deg);
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 /* Мобильное меню */
@@ -1067,6 +1074,28 @@ html {
   border: 0;
   color: var(--primary);
   cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.hero-scroll.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* «СКРОЛЛ ↓» главной: на мобилке тоже видна (у общего .scroll-hint она скрыта) */
+@media (max-width: 767px) {
+  .home-scroll-hint {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: var(--px);
+    z-index: 50;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+  }
 }
 
 .nowrap {
@@ -1085,12 +1114,348 @@ html {
   display: flex;
   flex-direction: column;
   gap: var(--size-xl);
-  scroll-margin-top: 100px;
 }
 
 .home-section-label {
   color: var(--primary);
   cursor: default;
+}
+
+/* Подвал главной */
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-lg);
+  max-width: 950px;
+  margin-top: 150px;
+  padding: 0 var(--px) 40px;
+}
+
+.home-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .home-footer {
+    margin-top: 100px;
+  }
+}
+
+/* 3D на главной: каждый блок целиком помещается в экран под шапкой */
+:root {
+  --three-d-max-h: calc(100svh - 190px);
+}
+
+.three-d-fit {
+  width: 100%;
+  height: auto;
+  max-height: var(--three-d-max-h);
+  object-fit: contain;
+}
+
+.three-d-ribbon-foot {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.three-d-ribbon-nav {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.three-d-arrow {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.three-d-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Лента расходников: свободная прокрутка, жёсткие края, без привязки к карточкам */
+.three-d-ribbon {
+  display: flex;
+  gap: var(--size-md);
+  overflow-x: auto;
+  overscroll-behavior-x: none;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.three-d-ribbon::-webkit-scrollbar {
+  display: none;
+}
+
+.three-d-ribbon.is-dragging {
+  cursor: grabbing;
+}
+
+.three-d-card {
+  flex: 0 0 min(calc((100% - 3 * var(--size-md)) / 3.3), calc(var(--three-d-max-h) - 50px));
+  aspect-ratio: 1;
+  background: var(--card);
+}
+
+.three-d-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .three-d-ribbon-nav {
+    display: none;
+  }
+
+  .three-d-card {
+    flex-basis: 78%;
+  }
+}
+
+/* Печатная продукция: рамка картинки в плитке 2×2 */
+.print-frame {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  aspect-ratio: 1778 / 1112;
+  background: var(--card);
+}
+
+.print-shot {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.print-shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+/* Ховер: увеличивается только эта картинка, внутри своей рамки */
+.print-shot:hover img {
+  transform: scale(1.05);
+}
+
+/* Полноэкранный просмотр */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 80px;
+  background: rgba(0, 0, 0, 0.92);
+  color: #ffffff;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: default;
+}
+
+.lightbox-counter,
+.lightbox-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--body2-size);
+  font-weight: 500;
+  letter-spacing: var(--body2-ls);
+  white-space: nowrap;
+}
+
+.lightbox-counter {
+  top: 24px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-caption {
+  bottom: 24px;
+}
+
+.lightbox-close,
+.lightbox-arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-arrow:hover {
+  opacity: 1;
+}
+
+.lightbox-close {
+  top: 12px;
+  right: 16px;
+}
+
+.lightbox-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+}
+
+.lightbox-prev {
+  left: 16px;
+}
+
+.lightbox-next {
+  right: 16px;
+}
+
+@media (max-width: 767px) {
+  .lightbox {
+    padding: 64px 12px 120px;
+  }
+
+  .lightbox-arrow {
+    top: auto;
+    bottom: 12px;
+    transform: none;
+  }
+
+  .lightbox-caption {
+    bottom: 76px;
+  }
+}
+
+/* Кейсы: плитка 2×2 */
+.home-section--cases {
+  gap: var(--size-lg);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--size-lg);
+  row-gap: var(--size-lg);
+}
+
+.case-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.case-tile-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.case-tile-title {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: var(--body1-size);
+  font-weight: 600;
+  line-height: var(--body1-lh);
+  letter-spacing: var(--body1-ls);
+  color: var(--primary);
+}
+
+.case-tile-title .text-secondary {
+  font-weight: 500;
+}
+
+/* Теги лежат внутри картинки, в левом нижнем углу */
+.case-tile-tags {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  max-width: calc(100% - 30px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: var(--body2-size);
+  font-weight: 500;
+  line-height: var(--body2-lh);
+  letter-spacing: var(--body2-ls);
+  color: var(--secondary);
+}
+
+.case-tile-tags li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  background: var(--card);
+}
+
+.case-tile-tags li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  background: currentColor;
+}
+
+.case-tile-tags li:first-child {
+  color: var(--primary);
+}
+
+@media (max-width: 767px) {
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-tile-tags {
+    bottom: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .case-tile-tags li {
+    padding: 5px 9px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1102,10 +1467,18 @@ html {
     gap: 60px;
   }
 
+  .home-section--cases {
+    gap: var(--size-lg);
+  }
+
   .home-section .comms-prod-banners,
-  .home-section .comms-anim-grid,
-  .home-section .comms-3d-pair {
+  .home-section .comms-anim-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Пара 3D-рендеров остаётся в ряд, чтобы блок помещался в экран */
+  .home-section .comms-3d-pair {
+    gap: 12px;
   }
 
   .home-section .comms-prod-poster {

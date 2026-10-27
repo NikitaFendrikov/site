@@ -13,6 +13,16 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, []);
 
+  // Подсказка к скроллу прячется, как только страницу начали листать
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 40);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
   return (
     <section id="top" className="hero">
       <div className="hero-inner">
@@ -25,7 +35,7 @@ export default function Hero() {
         </p>
 
         <p className="hero-note" style={{ opacity: play ? 1 : 0 }}>
-          <ScrambleText className="typo-nav" playing={play}>
+          <ScrambleText className="typo-nav" playing={play} framesPerChar={1}>
             Этот сайт собран на Next.js с помощью Claude Code
           </ScrambleText>
         </p>
@@ -33,8 +43,10 @@ export default function Hero() {
 
       <button
         type="button"
-        className="hero-scroll"
+        className={`hero-scroll${scrolled ? " is-hidden" : ""}`}
         aria-label="Прокрутить к кейсам"
+        aria-hidden={scrolled}
+        tabIndex={scrolled ? -1 : undefined}
         onClick={() => scrollToSection("cases")}
       >
         <ScrambleText className="typo-nav">Скролл ↓</ScrambleText>
