@@ -890,33 +890,40 @@ html {
 
 .topbar-burger {
   display: none;
+  position: relative;
   justify-self: end;
   width: 40px;
   height: 40px;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 7px;
   padding: 0;
   background: none;
   border: 0;
   cursor: pointer;
 }
 
+/* Полоски 2px на целых пикселях: верхняя 15–17, нижняя 23–25, центр крестика — 19 */
 .topbar-burger span {
-  display: block;
+  position: absolute;
+  right: 0;
   width: 26px;
-  height: 1.5px;
+  height: 2px;
   background: var(--primary);
   transition: transform 0.4s var(--ease-out);
 }
 
+.topbar-burger span:first-child {
+  top: 15px;
+}
+
+.topbar-burger span:last-child {
+  top: 23px;
+}
+
 .topbar.is-menu-open .topbar-burger span:first-child {
-  transform: translateY(4.25px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg);
 }
 
 .topbar.is-menu-open .topbar-burger span:last-child {
-  transform: translateY(-4.25px) rotate(-45deg);
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 /* Мобильное меню */
