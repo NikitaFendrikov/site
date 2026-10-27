@@ -112,11 +112,16 @@ export default function WaybotPage() {
           <div className="metrics-box">
             <div className="metrics-header">
               <div className="nav-dot" />
-              <span className="typo-title text-primary">АВТОНОМНАЯ НАСТРОЙКА</span>
+              <span className="typo-title text-primary">МЕТРИКИ</span>
             </div>
             <div className="metrics-cells">
               <div className="metrics-cell">
-                <span className="typo-body2 text-secondary">Операторы самостоятельно настраивают сценарии уборки без&nbsp;помощи технической команды.</span>
+                <span className="typo-metrics text-primary">50+ ↑</span>
+                <span className="typo-body2 text-secondary">B2B-заявок с&nbsp;сайта</span>
+              </div>
+              <div className="metrics-cell">
+                <span className="typo-metrics text-primary">16 ↑</span>
+                <span className="typo-body2 text-secondary">макетов для&nbsp;печати</span>
               </div>
             </div>
           </div>
