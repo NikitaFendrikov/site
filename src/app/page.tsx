@@ -6,6 +6,7 @@ import ImageReveal from "@/components/ImageReveal";
 import SiteHeader from "@/components/SiteHeader";
 import Hero from "@/components/Hero";
 import PrintBento from "@/components/PrintBento";
+import HomeScrollHint from "@/components/HomeScrollHint";
 import {
   AnimationTab,
   ThreeDTab,
@@ -160,8 +161,8 @@ export default function Home() {
         </section>
 
         <section id="presentations" className="home-section">
-          <SectionLabel>Презентации</SectionLabel>
-          <PresentationsTab />
+          <SectionLabel className="typo-title">Презентации</SectionLabel>
+          <PresentationsTab slash={false} />
         </section>
 
         <section id="three-d" className="home-section">
@@ -175,6 +176,8 @@ export default function Home() {
         </section>
 
       </div>
+
+      <HomeScrollHint />
 
       {/* Футер */}
       <nav className="site-nav">

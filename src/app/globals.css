@@ -1075,6 +1075,22 @@ html {
   pointer-events: none;
 }
 
+/* «СКРОЛЛ ↓» главной: на мобилке тоже видна (у общего .scroll-hint она скрыта) */
+@media (max-width: 767px) {
+  .home-scroll-hint {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: var(--px);
+    z-index: 50;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+  }
+}
+
 .nowrap {
   white-space: nowrap;
 }
