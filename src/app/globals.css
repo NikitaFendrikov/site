@@ -1136,10 +1136,10 @@ html {
   font-weight: 500;
 }
 
-/* Теги лежат внутри картинки, в левом верхнем углу */
+/* Теги лежат внутри картинки, в левом нижнем углу */
 .case-tile-tags {
   position: absolute;
-  top: 15px;
+  bottom: 15px;
   left: 15px;
   max-width: calc(100% - 30px);
   display: flex;
@@ -1183,7 +1183,7 @@ html {
   }
 
   .case-tile-tags {
-    top: 10px;
+    bottom: 10px;
     left: 10px;
     max-width: calc(100% - 20px);
   }
