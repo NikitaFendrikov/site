@@ -26,8 +26,6 @@ const GROUPS = [
     text: "Афиша турнира по единоборствам в нескольких форматах для печати и соцсетей. Ключевой визуал собран с применением AI-генерации.",
     items: [
       { area: "three", src: p.three },
-      { area: "four", src: p.four },
-      { area: "five", src: p.five },
     ],
   },
   {
@@ -57,7 +55,7 @@ const GROUPS = [
   },
 ];
 
-/* Все 14 работ подряд — для листания в просмотре */
+/* Все работы подряд — для листания в просмотре */
 const SLIDES = GROUPS.flatMap((g) => g.items.map((item) => ({ ...item, group: g.title })));
 
 function Lightbox({ index, onClose, onStep }: {
