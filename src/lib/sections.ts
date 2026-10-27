@@ -3,11 +3,11 @@ import { getLenis } from "@/lib/lenis-store";
 /* Разделы главной: id якоря и подпись в навигации */
 export const SECTIONS = [
   { id: "cases",         label: "Кейсы" },
-  { id: "print",         label: "Печатная продукция" },
-  { id: "animation",     label: "Анимация" },
-  { id: "three-d",       label: "3D" },
-  { id: "presentations", label: "Презентации" },
   { id: "sites",         label: "Сайты" },
+  { id: "print",         label: "Печатная продукция" },
+  { id: "presentations", label: "Презентации" },
+  { id: "three-d",       label: "3D" },
+  { id: "animation",     label: "Анимация" },
 ] as const;
 
 export const TELEGRAM_URL = "https://t.me/Nikita_Fendrikov";

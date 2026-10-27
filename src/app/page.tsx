@@ -13,9 +13,56 @@ import {
   SitesTab,
 } from "@/components/CommsSections";
 
-function SectionLabel({ children }: { children: string }) {
-  return <h2 className="home-section-label typo-nav">/&nbsp;&nbsp;{children}</h2>;
+function SectionLabel({ children, className = "typo-nav" }: { children: string; className?: string }) {
+  return <h2 className={`home-section-label ${className}`}>/&nbsp;&nbsp;{children}</h2>;
 }
+
+/* Кейсы: плитка 2×2 */
+const CASES: {
+  name: string;
+  kind: string;
+  desc: string;
+  tags: string[];
+  href: string;
+  external?: boolean;
+  src: string;
+  imgStyle?: React.CSSProperties;
+}[] = [
+  {
+    name: "AgonX",
+    kind: "платформа турниров по единоборствам",
+    desc: "Придумал название и бренд, перенёс айдентику в интерфейс и дизайн-систему",
+    tags: ["2025–2026", "Product & Brand Designer", "Нейминг, айдентика, UX/UI, дизайн-система"],
+    href: "/agonx",
+    src: images.home.agonx,
+  },
+  {
+    name: "Refined Renders",
+    kind: "студия 3D-визуализации",
+    desc: "Платформа бренда, ключевая идея «From rough to refined» и фирменный стиль",
+    tags: ["2026 — сейчас", "Brand Designer", "Нейминг, платформа бренда, айдентика"],
+    href: "/renders.pdf",
+    external: true,
+    src: images.communications.presentations.one,
+  },
+  {
+    name: "Waybot Robotics",
+    kind: "роботы-уборщики",
+    desc: "Интерфейс управления автономным роботом",
+    tags: ["2025–2026", "Communications & UX/UI Designer", "UX/UI, 3D, полиграфия, сайт"],
+    href: "/waybot",
+    src: images.home.waybot,
+  },
+  {
+    name: "CRIA",
+    kind: "студия архитектурной визуализации",
+    desc: "Дизайн и разработка сайта-портфолио",
+    tags: ["2024–2025", "Web Designer", "Структура, дизайн, вёрстка"],
+    href: "/cria-team",
+    src: images.home.criateam,
+    imgStyle: { transform: "scale(1.38)", transformOrigin: "center 40%" },
+  },
+];
 
 export default function Home() {
   return (
@@ -41,58 +88,37 @@ export default function Home() {
       <div className="home-sections">
 
         <section id="cases" className="home-section">
-          <SectionLabel>Кейсы</SectionLabel>
+          <SectionLabel className="typo-title">Кейсы</SectionLabel>
 
-          {/* AGONX — первый, лево */}
-          <div className="case-card align-left">
-            <ImageReveal>
-              <CaseCardLink href="/agonx">
-                <img src={images.home.agonx} alt="AGONX" className="w-full h-full object-cover" />
-              </CaseCardLink>
-            </ImageReveal>
-            <div className="case-card-meta">
-              <span className="typo-title text-primary">
-                /&nbsp;&nbsp;AGONX
-              </span>
-              <span className="typo-body2 text-secondary">
-                Дизайн интерфейса платформы для турниров, создание бренда
-              </span>
-            </div>
-          </div>
+          <div className="cases-grid">
+            {CASES.map((c) => (
+              <article key={c.name} className="case-tile">
+                <div className="case-tile-head">
+                  <h3 className="case-tile-title">
+                    {c.name} <span className="text-secondary">{c.kind}</span>
+                  </h3>
+                  <p className="typo-body2 text-primary">{c.desc}</p>
+                </div>
 
-          {/* WAYBOT ROBOTICS — второй, право */}
-          <div className="case-card align-right">
-            <ImageReveal>
-              <CaseCardLink href="/waybot">
-                <img src={images.home.waybot} alt="WAYBOT ROBOTICS" className="w-full h-full object-cover" />
-              </CaseCardLink>
-            </ImageReveal>
-            <div className="case-card-meta">
-              <span className="typo-title text-primary">
-                /&nbsp;&nbsp;WAYBOT ROBOTICS
-              </span>
-              <span className="typo-body2 text-secondary">
-                Интерфейс управления автономным роботом
-              </span>
-            </div>
-          </div>
+                <ul className="case-tile-tags">
+                  {c.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
 
-          {/* CRIA.TEAM — третий, лево */}
-          <div className="case-card align-left">
-            <ImageReveal>
-              <CaseCardLink href="/cria-team">
-                <img src={images.home.criateam} alt="CRIA.TEAM" className="w-full h-full object-cover" style={{ transform: "scale(1.38)", transformOrigin: "center 40%" }} />
-              </CaseCardLink>
-            </ImageReveal>
-            <div className="case-card-meta">
-              <span className="typo-title text-primary">
-                /&nbsp;&nbsp;CRIA.TEAM
-              </span>
-              <span className="typo-body2 text-secondary">
-                Дизайн и разработка сайта-портфолио
-              </span>
-            </div>
+                <ImageReveal>
+                  <CaseCardLink href={c.href} external={c.external} labelClassName="typo-title">
+                    <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
+                  </CaseCardLink>
+                </ImageReveal>
+              </article>
+            ))}
           </div>
+        </section>
+
+        <section id="sites" className="home-section">
+          <SectionLabel>Сайты</SectionLabel>
+          <SitesTab />
         </section>
 
         <section id="print" className="home-section">
@@ -100,9 +126,9 @@ export default function Home() {
           <ProductionTab />
         </section>
 
-        <section id="animation" className="home-section">
-          <SectionLabel>Анимация</SectionLabel>
-          <AnimationTab />
+        <section id="presentations" className="home-section">
+          <SectionLabel>Презентации</SectionLabel>
+          <PresentationsTab />
         </section>
 
         <section id="three-d" className="home-section">
@@ -110,14 +136,9 @@ export default function Home() {
           <ThreeDTab />
         </section>
 
-        <section id="presentations" className="home-section">
-          <SectionLabel>Презентации</SectionLabel>
-          <PresentationsTab />
-        </section>
-
-        <section id="sites" className="home-section">
-          <SectionLabel>Сайты</SectionLabel>
-          <SitesTab />
+        <section id="animation" className="home-section">
+          <SectionLabel>Анимация</SectionLabel>
+          <AnimationTab />
         </section>
 
       </div>

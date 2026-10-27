@@ -1093,6 +1093,84 @@ html {
   cursor: default;
 }
 
+/* Кейсы: плитка 2×2 */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--size-lg);
+  row-gap: var(--size-xl);
+}
+
+.case-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.case-tile-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.case-tile-title {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: var(--body1-size);
+  font-weight: 600;
+  line-height: var(--body1-lh);
+  letter-spacing: var(--body1-ls);
+  color: var(--primary);
+}
+
+.case-tile-title .text-secondary {
+  font-weight: 500;
+}
+
+.case-tile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 7px 14px;
+  list-style: none;
+  background: var(--card);
+  border-radius: 14px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: var(--body2-size);
+  font-weight: 500;
+  line-height: var(--body2-lh);
+  letter-spacing: var(--body2-ls);
+  color: var(--secondary);
+}
+
+.case-tile-tags li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.case-tile-tags li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  background: currentColor;
+}
+
+.case-tile-tags li:first-child {
+  color: var(--primary);
+}
+
+@media (max-width: 767px) {
+  .cases-grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+  }
+}
+
 @media (max-width: 767px) {
   .home-sections {
     gap: 120px;
