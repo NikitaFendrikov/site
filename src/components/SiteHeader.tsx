@@ -95,7 +95,6 @@ export default function SiteHeader() {
             <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="link-underline">
               <ScrambleText className="typo-nav">Telegram</ScrambleText>
             </a>
-            <div className="nav-dot" />
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-underline">
               <ScrambleText className="typo-nav">Резюме</ScrambleText>
             </a>
@@ -146,7 +145,6 @@ export default function SiteHeader() {
           >
             <span className="typo-nav">Telegram</span>
           </a>
-          <div className="nav-dot" />
           <a
             href="/resume.pdf"
             target="_blank"
