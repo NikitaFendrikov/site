@@ -843,7 +843,7 @@ html {
 .topbar-nav {
   display: flex;
   align-items: center;
-  gap: 3.2rem;
+  gap: var(--size-lg);
 }
 
 .topbar-nav-item {
@@ -885,7 +885,7 @@ html {
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--size-lg);
 }
 
 .topbar-burger {
@@ -980,7 +980,7 @@ html {
 .mobile-menu-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--size-lg);
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
