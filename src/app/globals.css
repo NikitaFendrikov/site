@@ -1021,8 +1021,8 @@ html {
   align-items: center;
   gap: 32px;
   width: 100%;
-  max-width: 24em;
-  font-size: 32px;
+  max-width: 768px;
+  font-size: 24px;
   text-align: center;
 }
 
