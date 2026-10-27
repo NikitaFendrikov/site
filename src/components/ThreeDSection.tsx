@@ -24,8 +24,10 @@ export default function ThreeDSection() {
     });
   }, []);
 
-  // Плавная прокрутка без привязки к карточкам: позиция догоняет цель,
-  // цель упирается в края ленты
+  // Плавная прокрутка без привязки к карточкам. Движение — мягкая пружина:
+  // лента разгоняется и тормозит без рывка, а новая цель на ходу не сбивает скорость.
+  // Цель упирается в края ленты
+  const velocity = useRef(0);
   const glideTo = useCallback((left: number) => {
     const el = track.current;
     if (!el) return;
@@ -35,13 +37,14 @@ export default function ThreeDSection() {
     // Позицию считаем дробной: scrollLeft округляется до пикселя и иначе застревает у цели
     let pos = el.scrollLeft;
     const tick = () => {
-      const diff = target.current - pos;
-      if (Math.abs(diff) < 0.5) {
+      velocity.current = (velocity.current + (target.current - pos) * 0.02) * 0.84;
+      pos += velocity.current;
+      if (Math.abs(target.current - pos) < 0.5 && Math.abs(velocity.current) < 0.1) {
         el.scrollLeft = target.current;
+        velocity.current = 0;
         frame.current = null;
         return;
       }
-      pos += diff * 0.14;
       el.scrollLeft = pos;
       frame.current = requestAnimationFrame(tick);
     };
@@ -51,6 +54,7 @@ export default function ThreeDSection() {
   const stopGlide = () => {
     if (frame.current !== null) cancelAnimationFrame(frame.current);
     frame.current = null;
+    velocity.current = 0;
   };
 
   // От текущей цели, если лента ещё едет, иначе от текущей позиции
@@ -75,7 +79,7 @@ export default function ThreeDSection() {
       e.preventDefault();
       e.stopPropagation();
       const delta = e.deltaY || e.deltaX;
-      if (delta) glideTo(base() + delta * 1.5);
+      if (delta) glideTo(base() + delta);
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
