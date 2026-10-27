@@ -8,11 +8,13 @@ export default function CaseCardLink({
   href,
   children,
   external = false,
+  label = "СМОТРЕТЬ КЕЙС",
   labelClassName = "typo-nav",
 }: {
   href: string;
   children: React.ReactNode;
   external?: boolean;
+  label?: string;
   labelClassName?: string;
 }) {
   const [hovered, setHovered] = useState(false);
@@ -37,7 +39,7 @@ export default function CaseCardLink({
       {children}
       <div className="card-overlay">
         <ScrambleText className={labelClassName} style={{ color: "#ffffff" }} playing={hovered}>
-          СМОТРЕТЬ КЕЙС
+          {label}
         </ScrambleText>
       </div>
     </div>

@@ -10,7 +10,6 @@ import {
   AnimationTab,
   ThreeDTab,
   PresentationsTab,
-  SitesTab,
 } from "@/components/CommsSections";
 
 function SectionLabel({ children, className = "typo-nav" }: { children: string; className?: string }) {
@@ -55,6 +54,28 @@ const CASES: {
     tags: ["2024–2025", "Сайт", "Вёрстка"],
     href: "/cria-team",
     src: images.home.criaSite,
+  },
+];
+
+/* Сайты: та же плитка, без тегов */
+const SITES: { name: string; desc: string; href: string; src: string }[] = [
+  {
+    name: "Waybot Robotics",
+    desc: "Корпоративный сайт производителя автономных роботов-уборщиков. Спроектировал структуру и дизайн, сделал 3D-иллюстрации роботов для страниц. Сайт принёс 50+ холодных B2B-заявок на продукт стоимостью от 1,5 млн ₽.",
+    href: "https://waybotrobotics.com/",
+    src: images.communications.sites.three,
+  },
+  {
+    name: "CRIA",
+    desc: "Сайт-портфолио студии архитектурной 3D-визуализации. Разработал дизайн вокруг рендеров студии и сам сверстал сайт он привёл студии 3 новых постоянных клиента.",
+    href: "https://cria.team/",
+    src: images.communications.sites.one,
+  },
+  {
+    name: "Lynk & Co",
+    desc: "Сайт для приёма заявок на автомобили Lynk & Co в фирменном стиле бренда. Один из примерно 15 лендингов, которые я сделал в студии «Руформат», вместе они принесли 500+ заявок за год.",
+    href: "https://lynkco-cars.ru/",
+    src: images.communications.sites.two,
   },
 ];
 
@@ -107,9 +128,30 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="sites" className="home-section">
+        <section id="sites" className="home-section home-section--cases">
           <SectionLabel>Сайты</SectionLabel>
-          <SitesTab />
+
+          <div className="cases-grid">
+            {SITES.map((s) => (
+              <article key={s.name} className="case-tile">
+                <ImageReveal>
+                  <CaseCardLink
+                    href={s.href}
+                    external
+                    label="ПЕРЕЙТИ НА САЙТ"
+                    labelClassName="typo-nav site-overlay-text"
+                  >
+                    <img src={s.src} alt={s.name} className="w-full h-full object-cover" />
+                  </CaseCardLink>
+                </ImageReveal>
+
+                <div className="case-tile-head">
+                  <h3 className="case-tile-title">{s.name}</h3>
+                  <p className="typo-body2 text-primary">{s.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section id="print" className="home-section">
