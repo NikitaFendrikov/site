@@ -34,13 +34,13 @@ const cards = [
   {
     number: "05",
     title: "Бренд",
-    text: "Придумал название, разработал логотип и&nbsp;стратегию бренда. AgonX&nbsp;— от&nbsp;греческого ἀγών (состязание, турнир), X&nbsp;добавляет tech-ощущение.",
+    text: "Придумал название, разработал логотип, визуальную концепцию и&nbsp;стратегию бренда. AgonX&nbsp;— от&nbsp;греческого ἀγών (состязание, турнир), X&nbsp;добавляет tech-ощущение. Айдентику перенёс в&nbsp;интерфейс платформы и&nbsp;афиши турниров.",
     photo: images.agonx.five,
   },
   {
     number: "06",
     title: "Результат",
-    text: "Платформа уже экономит время организаторам и&nbsp;атлетам. Скоро будет полноценный выход на&nbsp;рынок.",
+    text: "На&nbsp;платформе прошли 3&nbsp;турнира: 500+ атлетов и&nbsp;550+ схваток. Организаторы экономят минимум 2&nbsp;часа на&nbsp;каждом турнире.",
     photo: images.agonx.six,
   },
 ];
@@ -105,7 +105,7 @@ export default function AgonxPage() {
           <div className="case-sidebar-info">
             <p className="typo-body1 text-primary">
               AgonX&nbsp;— цифровая платформа для&nbsp;проведения турниров по&nbsp;единоборствам.{" "}
-              Я&nbsp;дизайнер проекта: спроектировал интерфейс с&nbsp;нуля и&nbsp;создал бренд со&nbsp;стратегией.
+              Я&nbsp;придумал название и&nbsp;создал бренд, а&nbsp;на&nbsp;его основе спроектировал интерфейс и&nbsp;дизайн-систему.
             </p>
             <a
               href="https://agonx.ru"
@@ -125,12 +125,12 @@ export default function AgonxPage() {
             </div>
             <div className="metrics-cells">
               <div className="metrics-cell">
-                <span className="typo-metrics text-primary">358 ↑</span>
+                <span className="typo-metrics text-primary">500+ ↑</span>
                 <span className="typo-body2 text-secondary">регистраций атлетов</span>
               </div>
               <div className="metrics-cell">
-                <span className="typo-metrics text-primary">392 ↑</span>
-                <span className="typo-body2 text-secondary">схватки проведено</span>
+                <span className="typo-metrics text-primary">550+ ↑</span>
+                <span className="typo-body2 text-secondary">схваток проведено</span>
               </div>
             </div>
           </div>

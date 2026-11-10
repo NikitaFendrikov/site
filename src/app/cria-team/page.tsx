@@ -15,26 +15,20 @@ const cards = [
   },
   {
     number: "02",
-    title: "Ограничения",
-    text: "Сайт нужен был «вчера», что не&nbsp;совпадало с&nbsp;долгим ожиданием разработки в&nbsp;студии. Плюс был оплачен тариф в&nbsp;тильде на&nbsp;год вперёд.",
-    photo: images.criateam.two,
-  },
-  {
-    number: "03",
     title: "Стратегия",
-    text: "Дизайн сайта предложил сделать в&nbsp;фигме, а&nbsp;разработку сайта сделать не&nbsp;при&nbsp;помощи тильдовских инструментов, а&nbsp;кодом и&nbsp;нейросетями.",
+    text: "Предложил спроектировать сайт в&nbsp;Figma вокруг рендеров студии и&nbsp;собрать его кодом, а&nbsp;не&nbsp;шаблонами Тильды.",
     photo: images.criateam.three,
   },
   {
-    number: "04",
+    number: "03",
     title: "Фича",
-    text: "Заменил CDN тильды для&nbsp;более качественного и&nbsp;быстрого отображения рендеров на&nbsp;CDN Sanity.",
+    text: "Перенёс хранение изображений на&nbsp;отдельный сервис&nbsp;— рендеры грузятся быстрее и&nbsp;без&nbsp;потери качества.",
     photo: images.criateam.four,
   },
   {
-    number: "05",
+    number: "04",
     title: "Результат",
-    text: "У&nbsp;студии появился сайт. Теперь не&nbsp;нужно каждый раз по&nbsp;новой рассказывать о&nbsp;себе&nbsp;клиентам и&nbsp;показывать им&nbsp;работы.",
+    text: "У&nbsp;студии появился сайт, который сам рассказывает о&nbsp;ней клиентам. Он&nbsp;привёл 3&nbsp;новых постоянных клиента.",
     photo: images.criateam.five,
   },
 ];
@@ -98,8 +92,8 @@ export default function CriaTeamPage() {
         <aside className="case-sidebar">
           <div className="case-sidebar-info">
             <p className="typo-body1 text-primary">
-              CRIA — студия архитектурной визуализации, которая работает с&nbsp;бюро США и&nbsp;Европы.{" "}
-              Я полностью создал сайт-портфолио — от&nbsp;дизайна до&nbsp;конечного кода.
+              CRIA&nbsp;— студия архитектурной 3D-визуализации, которая работает с&nbsp;бюро из&nbsp;Швеции, Норвегии, Дании и&nbsp;США.{" "}
+              Я&nbsp;полностью создал сайт-портфолио от&nbsp;дизайна до&nbsp;кода.
             </p>
             <a
               href="https://cria.team"

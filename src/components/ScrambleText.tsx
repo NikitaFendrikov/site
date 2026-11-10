@@ -9,11 +9,13 @@ export default function ScrambleText({
   className,
   playing,
   style,
+  framesPerChar = 1,
 }: {
   children: string;
   className?: string;
   playing?: boolean;
   style?: React.CSSProperties;
+  framesPerChar?: number; // сколько кадров на одну букву: меньше — быстрее
 }) {
   const [display, setDisplay] = useState(children);
   const frameRef = useRef<number | null>(null);
@@ -21,7 +23,7 @@ export default function ScrambleText({
   const scramble = useCallback(() => {
     let iteration = 0;
     const original = children;
-    const totalFrames = original.length * 3;
+    const totalFrames = original.length * framesPerChar;
 
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
 
@@ -29,7 +31,7 @@ export default function ScrambleText({
       setDisplay(
         original.split("").map((char, i) => {
           if (char === " ") return " ";
-          if (i < Math.floor(iteration / 3)) return original[i];
+          if (i < Math.floor(iteration / framesPerChar)) return original[i];
           return CHARS[Math.floor(Math.random() * CHARS.length)];
         }).join("")
       );
@@ -42,7 +44,7 @@ export default function ScrambleText({
     };
 
     animate();
-  }, [children]);
+  }, [children, framesPerChar]);
 
   const reset = useCallback(() => {
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
