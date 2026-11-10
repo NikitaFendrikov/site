@@ -120,8 +120,8 @@ export default function WaybotPage() {
                 <span className="typo-body2 text-secondary">B2B-заявок с&nbsp;сайта</span>
               </div>
               <div className="metrics-cell">
-                <span className="typo-metrics text-primary">16 ↑</span>
-                <span className="typo-body2 text-secondary">макетов для&nbsp;печати</span>
+                <span className="typo-metrics text-primary">80% ↓</span>
+                <span className="typo-body2 text-secondary">обращений за&nbsp;помощью</span>
               </div>
             </div>
           </div>

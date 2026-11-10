@@ -27,11 +27,12 @@ export default function Hero() {
     <section id="top" className="hero">
       <div className="hero-inner">
         <p className="hero-statement">
-          <strong className="nowrap">Бренд- и&nbsp;веб-дизайнер</strong> с&nbsp;коммерческим
-          опытом <strong>более 3&nbsp;лет</strong>. Создаю айдентику с&nbsp;нуля и&nbsp;переношу
-          её на&nbsp;сайт и&nbsp;другие носители. Сделал бренд для&nbsp;спортивной платформы,
-          через которую прошли <strong>500+&nbsp;атлетов</strong>, и&nbsp;сайт для&nbsp;производителя
-          роботов, который принёс <strong>50+&nbsp;заявок</strong>. Делаю 3D и&nbsp;сам пишу&nbsp;код.
+          <strong className="nowrap">Дизайнер</strong> с&nbsp;коммерческим опытом <strong>более
+          3&nbsp;лет</strong>. Проектирую B2B-, web- и&nbsp;mobile-продукты: от&nbsp;исследования
+          и&nbsp;сценариев до&nbsp;дизайн-системы. Спроектировал интерфейс робота, после которого
+          обращений в&nbsp;техподдержку стало на&nbsp;<strong>80%</strong> меньше, и&nbsp;сценарии
+          спортивной платформы, через которые прошли <strong>500+&nbsp;атлетов</strong>. Сам довожу
+          дизайн до&nbsp;работающего кода.
         </p>
 
         <p className="hero-note" style={{ opacity: play ? 1 : 0 }}>
