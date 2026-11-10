@@ -9,56 +9,42 @@ export default function ScrambleText({
   className,
   playing,
   style,
-  msPerChar = 33,
-  shuffleMs = 50,
+  framesPerChar = 2,
 }: {
   children: string;
   className?: string;
   playing?: boolean;
   style?: React.CSSProperties;
-  msPerChar?: number; // сколько мс на одну букву: меньше — быстрее
-  shuffleMs?: number; // как часто меняются случайные символы, мс (0 — каждый кадр)
+  framesPerChar?: number; // сколько кадров на одну букву: меньше — быстрее
 }) {
   const [display, setDisplay] = useState(children);
   const frameRef = useRef<number | null>(null);
 
   const scramble = useCallback(() => {
+    let iteration = 0;
     const original = children;
-    const total = original.length * msPerChar;
-    let start: number | null = null;
-    let lastShuffle = -Infinity;
-    let noise = "";
+    const totalFrames = original.length * framesPerChar;
 
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
 
-    // Время, а не кадры: скорость одинакова на 60 и 120 Гц
-    const animate = (now: number) => {
-      if (start === null) start = now;
-      const elapsed = now - start;
-
-      if (elapsed >= total) {
-        setDisplay(original);
-        return;
-      }
-
-      if (now - lastShuffle >= shuffleMs) {
-        noise = original.split("").map(() => CHARS[Math.floor(Math.random() * CHARS.length)]).join("");
-        lastShuffle = now;
-      }
-
-      const revealed = Math.floor(elapsed / msPerChar);
+    const animate = () => {
       setDisplay(
         original.split("").map((char, i) => {
           if (char === " ") return " ";
-          if (i < revealed) return char;
-          return noise[i];
+          if (i < Math.floor(iteration / framesPerChar)) return original[i];
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
         }).join("")
       );
-      frameRef.current = requestAnimationFrame(animate);
+      iteration++;
+      if (iteration <= totalFrames) {
+        frameRef.current = requestAnimationFrame(animate);
+      } else {
+        setDisplay(original);
+      }
     };
 
-    frameRef.current = requestAnimationFrame(animate);
-  }, [children, msPerChar, shuffleMs]);
+    animate();
+  }, [children, framesPerChar]);
 
   const reset = useCallback(() => {
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
