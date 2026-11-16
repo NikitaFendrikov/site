@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useNavigation } from "@/context/NavigationContext";
+import Link from "next/link";
 import ScrambleText from "./ScrambleText";
 import ImageReveal from "./ImageReveal";
 
@@ -25,25 +25,15 @@ export default function CaseCardLink({
   labelClassName?: string;
 }) {
   const [hovered, setHovered] = useState(false);
-  const { navigateTo } = useNavigation();
 
-  const onClick = (e: React.MouseEvent) => {
-    // Внутренние ссылки — через переход сайта; Ctrl/Cmd-клик открывает как обычно
-    if (external || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-    e.preventDefault();
-    navigateTo(href);
+  const props = {
+    className: `card-link ${className}`,
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => setHovered(false),
   };
 
-  return (
-    <a
-      href={href}
-      className={`card-link ${className}`}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+  const content = (
+    <>
       <ImageReveal>
         <div className="case-card-image">
           {children}
@@ -55,6 +45,22 @@ export default function CaseCardLink({
         </div>
       </ImageReveal>
       {meta}
-    </a>
+    </>
+  );
+
+  // Внешние ссылки и PDF — в новой вкладке
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        {content}
+      </a>
+    );
+  }
+
+  // Кейсы — через Link: Next заранее подгружает страницу, переход без ожидания
+  return (
+    <Link href={href} {...props}>
+      {content}
+    </Link>
   );
 }
