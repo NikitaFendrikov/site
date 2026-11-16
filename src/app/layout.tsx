@@ -35,12 +35,12 @@ export const metadata: Metadata = {
     default: "Никита Фендриков",
     template: "%s - Никита Фендриков",
   },
-  description: "UX/UI дизайнер.",
-  metadataBase: new URL("https://nikitafendrikov.com"),
+  description: "Дизайнер с коммерческим опытом более 3 лет. Проектирую B2B-сервисы от исследования и сценариев до дизайн-системы. Сократил обращения в техподдержку на 80% и привлёк сайтом 50+ B2B-заявок.",
+  metadataBase: new URL("https://nikitafendrikov.ru"),
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://nikitafendrikov.com",
+    url: "https://nikitafendrikov.ru",
     siteName: "Никита Фендриков",
     // ↓ Добавь /public/og-image.jpg для превью в соцсетях (1200×630 px)
     images: [
