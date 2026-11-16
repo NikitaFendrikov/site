@@ -4,6 +4,7 @@ import { useState } from "react";
 import { images } from "@/lib/images";
 import ScrambleText from "@/components/ScrambleText";
 import ImageReveal from "@/components/ImageReveal";
+import CaseCardLink from "@/components/CaseCardLink";
 
 export function ProductionTab() {
   const p = images.communications.production;
@@ -113,31 +114,22 @@ export function ThreeDTab() {
 function PresentationCard({ src, label, desc, href, align }: {
   src: string; label: string; desc: string; href: string; align: string;
 }) {
-  const [hovered, setHovered] = useState(false);
   return (
-    <div className={`case-card align-${align}`}>
-      <ImageReveal>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="case-card-image"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          <img src={src} alt={label} className="w-full h-full object-cover" />
-          <div className="card-overlay">
-            <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
-              ОТКРЫТЬ PDF
-            </ScrambleText>
-          </div>
-        </a>
-      </ImageReveal>
-      <div className="case-card-meta">
-        <span className="typo-title text-primary">{label}</span>
-        <span className="typo-body2 text-secondary">{desc}</span>
-      </div>
-    </div>
+    <CaseCardLink
+      href={href}
+      external
+      className={`case-card align-${align}`}
+      label="ОТКРЫТЬ PDF"
+      labelClassName="typo-nav site-overlay-text"
+      meta={
+        <div className="case-card-meta">
+          <span className="typo-title text-primary">{label}</span>
+          <span className="typo-body2 text-secondary">{desc}</span>
+        </div>
+      }
+    >
+      <img src={src} alt={label} className="w-full h-full object-cover" />
+    </CaseCardLink>
   );
 }
 
@@ -161,31 +153,22 @@ export function PresentationsTab({ slash = true }: { slash?: boolean } = {}) {
 function SiteCard({ src, label, desc, href, align }: {
   src: string; label: string; desc: string; href: string; align: string;
 }) {
-  const [hovered, setHovered] = useState(false);
   return (
-    <div className={`case-card align-${align}`}>
-      <ImageReveal>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="case-card-image"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          <img src={src} alt={label} className="w-full h-full object-cover" />
-          <div className="card-overlay">
-            <ScrambleText className="typo-nav site-overlay-text" style={{ color: "#ffffff" }} playing={hovered}>
-              ПЕРЕЙТИ НА САЙТ
-            </ScrambleText>
-          </div>
-        </a>
-      </ImageReveal>
-      <div className="case-card-meta">
-        <span className="typo-title text-primary">{label}</span>
-        <span className="typo-body2 text-secondary">{desc}</span>
-      </div>
-    </div>
+    <CaseCardLink
+      href={href}
+      external
+      className={`case-card align-${align}`}
+      label="ПЕРЕЙТИ НА САЙТ"
+      labelClassName="typo-nav site-overlay-text"
+      meta={
+        <div className="case-card-meta">
+          <span className="typo-title text-primary">{label}</span>
+          <span className="typo-body2 text-secondary">{desc}</span>
+        </div>
+      }
+    >
+      <img src={src} alt={label} className="w-full h-full object-cover" />
+    </CaseCardLink>
   );
 }
 

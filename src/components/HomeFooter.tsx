@@ -1,31 +1,32 @@
 "use client";
 
-import ScrambleText from "./ScrambleText";
+import { TelegramIcon } from "./Icons";
 import { TELEGRAM_URL, scrollToSection } from "@/lib/sections";
 
 export default function HomeFooter() {
   return (
     <footer className="home-footer">
       <p className="typo-body1 text-primary">
-        Веду бренд от&nbsp;идеи до&nbsp;носителей: ищу ключевую метафору, собираю фирменный стиль
-        и&nbsp;сам довожу его до&nbsp;сайта, полиграфии и&nbsp;3D. Открыт к&nbsp;full-time предложениям
+        В&nbsp;работе опираюсь на&nbsp;продуктовые метрики и&nbsp;интерес бизнеса. Считаю, что дизайн
+        должен давать результат, а&nbsp;не&nbsp;только хорошо выглядеть. Открыт к&nbsp;full-time предложениям
         и&nbsp;проектному сотрудничеству.
       </p>
 
       <nav className="home-footer-links">
-        <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="link-underline">
-          <ScrambleText className="typo-nav">Написать в Телеграм</ScrambleText>
+        <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="icon-link hover-fade">
+          <TelegramIcon />
+          <span className="typo-nav link-underline">Написать в Телеграм</span>
         </a>
         <div className="nav-dot" />
         <a
           href="#top"
-          className="text-primary"
+          className="text-primary hover-fade"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("top");
           }}
         >
-          <ScrambleText className="typo-nav">Наверх</ScrambleText>
+          <span className="typo-nav">Наверх</span>
         </a>
       </nav>
     </footer>

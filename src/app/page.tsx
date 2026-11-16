@@ -1,6 +1,5 @@
 import { images } from "@/lib/images";
 import CaseCardLink from "@/components/CaseCardLink";
-import ImageReveal from "@/components/ImageReveal";
 import SiteHeader from "@/components/SiteHeader";
 import Hero from "@/components/Hero";
 import PrintBento from "@/components/PrintBento";
@@ -30,21 +29,21 @@ const CASES: {
   {
     name: "AgonX",
     desc: "Платформа для турниров по единоборствам: 3 турнира, 500+ атлетов, 550+ схваток. Исследовал процессы организаторов и судей, спроектировал регистрацию, участие и цифровое судейство, которое экономит организаторам минимум 2 часа на турнир. Собрал дизайн-систему из 50+ компонентов.",
-    tags: ["2025–2026", "Исследование", "UX/UI", "Дизайн-система"],
+    tags: ["2025–2026", "Web", "Mobile", "B2B", "B2C"],
     href: "/agonx",
     src: images.home.agonx,
   },
   {
     name: "Waybot Robotics",
     desc: "Производитель автономных роботов-уборщиков, резидент «Сколково». Спроектировал интерфейс робота для операторов и техспециалистов, и обращений к технической команде стало на 80% меньше. Сделал корпоративный сайт, который принёс 50+ B2B-заявок.",
-    tags: ["2025–2026", "UX/UI", "B2B", "Сайт"],
+    tags: ["2025–2026", "Web", "Интерфейс робота", "B2B"],
     href: "/waybot",
     src: images.waybot.six,
   },
   {
     name: "CRIA",
     desc: "Студия архитектурной 3D-визуализации, клиенты из Швеции, Норвегии, Дании и США. Спроектировал структуру сайта-портфолио и сам сверстал его на HTML, CSS и JS. Сайт привёл студии 3 новых постоянных клиента.",
-    tags: ["2024–2025", "Сайт", "Вёрстка"],
+    tags: ["2024–2025", "Web", "Разработка"],
     href: "/cria-team",
     src: images.home.criaSite,
   },
@@ -101,26 +100,25 @@ export default function Home() {
           <div className="cases-grid">
             {CASES.map((c) => (
               <article key={c.name} className="case-tile">
-                <ImageReveal>
-                  <CaseCardLink
-                    href={c.href}
-                    external={c.external}
-                    label={c.label}
-                    labelClassName={c.label ? "typo-nav site-overlay-text" : undefined}
-                  >
-                    <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
-                    <ul className="case-tile-tags">
-                      {c.tags.map((tag) => (
-                        <li key={tag}>{tag}</li>
-                      ))}
-                    </ul>
-                  </CaseCardLink>
-                </ImageReveal>
-
-                <div className="case-tile-head">
-                  <h3 className="case-tile-title">{c.name}</h3>
-                  <p className="typo-body2 text-primary">{c.desc}</p>
-                </div>
+                <CaseCardLink
+                  href={c.href}
+                  external={c.external}
+                  label={c.label}
+                  labelClassName={c.label ? "typo-nav site-overlay-text" : undefined}
+                  meta={
+                    <div className="case-tile-head">
+                      <h3 className="case-tile-title">{c.name}</h3>
+                      <p className="typo-body2 text-primary">{c.desc}</p>
+                    </div>
+                  }
+                >
+                  <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
+                  <ul className="case-tile-tags">
+                    {c.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </CaseCardLink>
               </article>
             ))}
           </div>
@@ -132,29 +130,23 @@ export default function Home() {
           <div className="cases-grid">
             {SITES.map((s) => (
               <article key={s.name} className="case-tile">
-                <ImageReveal>
-                  <CaseCardLink
-                    href={s.href}
-                    external
-                    label="ПЕРЕЙТИ НА САЙТ"
-                    labelClassName="typo-nav site-overlay-text"
-                  >
-                    <img src={s.src} alt={s.name} className="w-full h-full object-cover" />
-                  </CaseCardLink>
-                </ImageReveal>
-
-                <div className="case-tile-head">
-                  <h3 className="case-tile-title">{s.name}</h3>
-                  <p className="typo-body2 text-primary">{s.desc}</p>
-                </div>
+                <CaseCardLink
+                  href={s.href}
+                  external
+                  label="ПЕРЕЙТИ НА САЙТ"
+                  labelClassName="typo-nav site-overlay-text"
+                  meta={
+                    <div className="case-tile-head">
+                      <h3 className="case-tile-title">{s.name}</h3>
+                      <p className="typo-body2 text-primary">{s.desc}</p>
+                    </div>
+                  }
+                >
+                  <img src={s.src} alt={s.name} className="w-full h-full object-cover" />
+                </CaseCardLink>
               </article>
             ))}
           </div>
-        </section>
-
-        <section id="print" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">Печатная продукция</SectionLabel>
-          <PrintBento />
         </section>
 
         <section id="presentations" className="home-section home-section--cases">
@@ -162,14 +154,29 @@ export default function Home() {
           <PresentationsTab slash={false} />
         </section>
 
-        <section id="three-d" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">3D</SectionLabel>
-          <ThreeDSection />
-        </section>
+        <section id="other" className="home-section home-section--group">
+          <div className="home-section home-section--cases">
+            <SectionLabel className="typo-title">Другие работы</SectionLabel>
+            <p className="typo-body1 text-primary home-section-intro">
+              Не&nbsp;боюсь задач за&nbsp;рамками прямых обязанностей: делаю 3D-визуализацию в&nbsp;Cinema&nbsp;4D,
+              макеты для&nbsp;печатной продукции в&nbsp;Illustrator и&nbsp;анимацию в&nbsp;After&nbsp;Effects.
+            </p>
+          </div>
 
-        <section id="animation" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">Анимация</SectionLabel>
-          <AnimationTab />
+          <div id="print" className="home-section home-section--cases">
+            <SectionLabel>Печатная продукция</SectionLabel>
+            <PrintBento />
+          </div>
+
+          <div id="three-d" className="home-section home-section--cases">
+            <SectionLabel>3D</SectionLabel>
+            <ThreeDSection />
+          </div>
+
+          <div id="animation" className="home-section home-section--cases">
+            <SectionLabel>Анимация</SectionLabel>
+            <AnimationTab />
+          </div>
         </section>
 
       </div>
