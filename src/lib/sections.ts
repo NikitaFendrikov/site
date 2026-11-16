@@ -5,7 +5,7 @@ export const SECTIONS = [
   { id: "cases",         label: "Кейсы" },
   { id: "sites",         label: "Сайты" },
   { id: "presentations", label: "Презентации" },
-  { id: "other",         label: "Другие работы" },
+  { id: "print",         label: "Другие работы" }, // вводный текст — только отбивка, ведём сразу к печати
 ] as const;
 
 export const TELEGRAM_URL = "https://t.me/Nikita_Fendrikov";
