@@ -4,10 +4,8 @@ import { getLenis } from "@/lib/lenis-store";
 export const SECTIONS = [
   { id: "cases",         label: "Кейсы" },
   { id: "sites",         label: "Сайты" },
-  { id: "print",         label: "Печатная продукция" },
   { id: "presentations", label: "Презентации" },
-  { id: "three-d",       label: "3D" },
-  { id: "animation",     label: "Анимация" },
+  { id: "other",         label: "Другие работы" },
 ] as const;
 
 export const TELEGRAM_URL = "https://t.me/Nikita_Fendrikov";

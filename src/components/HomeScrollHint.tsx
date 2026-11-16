@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ScrambleText from "./ScrambleText";
 import { getLenis } from "@/lib/lenis-store";
 
 /* Отступ под шапку: верх следующего блока встаёт сразу под ней */
@@ -18,11 +17,11 @@ const TARGETS = [
 export default function HomeScrollHint() {
   const [visible, setVisible] = useState(false);
 
-  // Видна с момента, когда «Печатная продукция» дошла до верхней половины экрана, и до низа страницы
+  // Видна с момента, когда «Презентации» дошли до верхней половины экрана, и до низа страницы
   useEffect(() => {
     const update = () => {
-      const print = document.getElementById("print");
-      const reached = !!print && print.getBoundingClientRect().top <= window.innerHeight * 0.5;
+      const start = document.getElementById("presentations");
+      const reached = !!start && start.getBoundingClientRect().top <= window.innerHeight * 0.5;
       const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
       setVisible(reached && !atBottom);
     };
@@ -69,7 +68,7 @@ export default function HomeScrollHint() {
         pointerEvents: visible ? "all" : "none",
       }}
     >
-      <ScrambleText className="typo-nav">СКРОЛЛ ↓</ScrambleText>
+      <span className="typo-nav hover-fade">СКРОЛЛ ↓</span>
     </button>
   );
 }

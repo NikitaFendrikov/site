@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ScrambleText from "./ScrambleText";
 import { getLenis } from "@/lib/lenis-store";
 
 export default function ScrollHint({ targetSelector, offset = 0 }: { targetSelector?: string; offset?: number }) {
@@ -50,7 +49,7 @@ export default function ScrollHint({ targetSelector, offset = 0 }: { targetSelec
         pointerEvents: atBottom ? "none" : "all",
       }}
     >
-      <ScrambleText className="typo-nav">СКРОЛЛ ↓</ScrambleText>
+      <span className="typo-nav hover-fade">СКРОЛЛ ↓</span>
     </button>
   );
 }

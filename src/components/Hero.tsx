@@ -28,11 +28,11 @@ export default function Hero() {
       <div className="hero-inner">
         <p className="hero-statement">
           <strong className="nowrap">Дизайнер</strong> с&nbsp;коммерческим опытом <strong>более
-          3&nbsp;лет</strong>. Проектирую B2B-, web- и&nbsp;mobile-продукты: от&nbsp;исследования
-          и&nbsp;сценариев до&nbsp;дизайн-системы. Спроектировал интерфейс робота, после которого
-          обращений в&nbsp;техподдержку стало на&nbsp;<strong>80%</strong> меньше, и&nbsp;сценарии
-          спортивной платформы, через которые прошли <strong>500+&nbsp;атлетов</strong>. Сам довожу
-          дизайн до&nbsp;работающего кода.
+          3&nbsp;лет</strong>. Проектирую B2B-сервисы от&nbsp;исследования и&nbsp;сценариев
+          до&nbsp;дизайн-системы. Сократил обращения операторов в&nbsp;техподдержку
+          на&nbsp;<strong>80%</strong>, привлёк сайтом <strong>50+</strong> заявок на&nbsp;продукт
+          стоимостью от&nbsp;<strong className="nowrap">1,5&nbsp;млн&nbsp;₽</strong> и&nbsp;спроектировал
+          сценарии, через которые прошли <strong>500+</strong> пользователей.
         </p>
 
         <p className="hero-note" style={{ opacity: play ? 1 : 0 }}>
@@ -50,7 +50,7 @@ export default function Hero() {
         tabIndex={scrolled ? -1 : undefined}
         onClick={() => scrollToSection("cases")}
       >
-        <ScrambleText className="typo-nav">Скролл ↓</ScrambleText>
+        <span className="typo-nav hover-fade">Скролл ↓</span>
       </button>
     </section>
   );

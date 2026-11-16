@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ScrambleText from "./ScrambleText";
+import { TelegramIcon, PdfIcon } from "./Icons";
 import { getLenis } from "@/lib/lenis-store";
 import { SECTIONS, TELEGRAM_URL, scrollToSection } from "@/lib/sections";
 
@@ -85,18 +85,20 @@ export default function SiteHeader() {
                 className={`topbar-nav-item${active === id ? " active" : ""}`}
                 aria-current={active === id ? "true" : undefined}
               >
-                <ScrambleText className="typo-nav">{label}</ScrambleText>
+                <span className="typo-nav">{label}</span>
                 <span className="topbar-nav-dot" aria-hidden="true" />
               </a>
             ))}
           </nav>
 
           <div className="topbar-links">
-            <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="link-underline">
-              <ScrambleText className="typo-nav">Telegram</ScrambleText>
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" className="icon-link hover-fade">
+              <TelegramIcon />
+              <span className="typo-nav link-underline">Telegram</span>
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-underline">
-              <ScrambleText className="typo-nav">Резюме</ScrambleText>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="icon-link hover-fade">
+              <PdfIcon />
+              <span className="typo-nav link-underline">Резюме</span>
             </a>
           </div>
 
@@ -141,18 +143,20 @@ export default function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={menuOpen ? undefined : -1}
-            className="link-underline"
+            className="icon-link"
           >
-            <span className="typo-nav">Telegram</span>
+            <TelegramIcon />
+            <span className="typo-nav link-underline">Telegram</span>
           </a>
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={menuOpen ? undefined : -1}
-            className="link-underline"
+            className="icon-link"
           >
-            <span className="typo-nav">Резюме</span>
+            <PdfIcon />
+            <span className="typo-nav link-underline">Резюме</span>
           </a>
         </div>
       </div>

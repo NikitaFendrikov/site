@@ -1121,6 +1121,49 @@ html {
   cursor: default;
 }
 
+/* «Другие работы»: вводный текст и подразделы */
+.home-section--group {
+  gap: var(--size-2xl);
+}
+
+.home-section-intro {
+  max-width: 950px;
+}
+
+/* Ховер ссылок и кнопок: 0.45 → 1 (только там, где есть ховер) */
+.hover-fade {
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: hover) {
+  .hover-fade {
+    opacity: 0.45;
+  }
+
+  .hover-fade:hover {
+    opacity: 1;
+  }
+}
+
+/* Ссылка с иконкой слева; подчёркивание только под текстом */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+}
+
+.link-icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  font-size: var(--nav-size);
+}
+
+.icon-link:hover .link-underline::after {
+  width: 100%;
+}
+
 /* Подвал главной */
 .home-footer {
   display: flex;

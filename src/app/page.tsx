@@ -152,24 +152,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="print" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">Печатная продукция</SectionLabel>
-          <PrintBento />
-        </section>
-
         <section id="presentations" className="home-section home-section--cases">
           <SectionLabel className="typo-title">Презентации</SectionLabel>
           <PresentationsTab slash={false} />
         </section>
 
-        <section id="three-d" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">3D</SectionLabel>
-          <ThreeDSection />
-        </section>
+        <section id="other" className="home-section home-section--group">
+          <div className="home-section home-section--cases">
+            <SectionLabel className="typo-title">Другие работы</SectionLabel>
+            <p className="typo-body1 text-primary home-section-intro">
+              Не&nbsp;боюсь задач за&nbsp;рамками прямых обязанностей: делаю 3D-визуализацию в&nbsp;Cinema&nbsp;4D,
+              макеты для&nbsp;печатной продукции в&nbsp;Illustrator и&nbsp;анимацию в&nbsp;After&nbsp;Effects.
+            </p>
+          </div>
 
-        <section id="animation" className="home-section home-section--cases">
-          <SectionLabel className="typo-title">Анимация</SectionLabel>
-          <AnimationTab />
+          <div id="print" className="home-section home-section--cases">
+            <SectionLabel>Печатная продукция</SectionLabel>
+            <PrintBento />
+          </div>
+
+          <div id="three-d" className="home-section home-section--cases">
+            <SectionLabel>3D</SectionLabel>
+            <ThreeDSection />
+          </div>
+
+          <div id="animation" className="home-section home-section--cases">
+            <SectionLabel>Анимация</SectionLabel>
+            <AnimationTab />
+          </div>
         </section>
 
       </div>
