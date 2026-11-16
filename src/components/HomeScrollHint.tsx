@@ -36,15 +36,15 @@ export default function HomeScrollHint() {
   }, []);
 
   // Следующий блок — первый заметно ниже шапки, который ещё не виден целиком.
-  // Шаг не больше 85% экрана, чтобы высокие блоки не проскакивали
-  const handleClick = () => {
-    const minTop = HEADER_OFFSET + window.innerHeight * 0.2;
+    const handleClick = () => {
+    // Шаг не меньше 70% экрана и не больше экрана минус шапка
+    const minTop = window.innerHeight * 0.7 + HEADER_OFFSET;
     const next = Array.from(document.querySelectorAll<HTMLElement>(TARGETS)).find((el) => {
       const r = el.getBoundingClientRect();
-      return r.top > minTop && r.bottom > window.innerHeight;
+      return r.top >= minTop && r.bottom > window.innerHeight;
     });
 
-    const limit = window.scrollY + window.innerHeight * 0.85;
+    const limit = window.scrollY + window.innerHeight - HEADER_OFFSET;
     const target = next
       ? Math.min(next.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET, limit)
       : limit;

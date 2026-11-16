@@ -1180,8 +1180,27 @@ html {
   gap: var(--size-2xl);
 }
 
-.home-section-intro {
-  max-width: 950px;
+/* Вводный текст «Других работ»: как лид, но компактнее по высоте */
+.other-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  min-height: 60svh;
+  font-size: 24px;
+  text-align: center;
+}
+
+.other-intro .hero-statement {
+  max-width: 768px;
+}
+
+@media (max-width: 767px) {
+  .other-intro {
+    min-height: 0;
+    padding: 100px 0;
+    font-size: 22px;
+  }
 }
 
 /* Ховер ссылок и кнопок: 0.45 → 1 (только там, где есть ховер) */
