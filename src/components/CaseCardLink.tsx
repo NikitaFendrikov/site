@@ -3,16 +3,23 @@
 import { useState } from "react";
 import { useNavigation } from "@/context/NavigationContext";
 import ScrambleText from "./ScrambleText";
+import ImageReveal from "./ImageReveal";
 
+/* Карточка целиком — ссылка: картинка с оверлеем и подпись под ней (meta).
+   Ховер на любой части карточки показывает оверлей со скрэмблом. */
 export default function CaseCardLink({
   href,
   children,
+  meta,
+  className = "",
   external = false,
   label = "СМОТРЕТЬ КЕЙС",
   labelClassName = "typo-nav",
 }: {
   href: string;
   children: React.ReactNode;
+  meta?: React.ReactNode;
+  className?: string;
   external?: boolean;
   label?: string;
   labelClassName?: string;
@@ -20,28 +27,34 @@ export default function CaseCardLink({
   const [hovered, setHovered] = useState(false);
   const { navigateTo } = useNavigation();
 
-  const open = () => {
-    if (external) window.open(href, "_blank", "noopener,noreferrer");
-    else navigateTo(href);
+  const onClick = (e: React.MouseEvent) => {
+    // Внутренние ссылки — через переход сайта; Ctrl/Cmd-клик открывает как обычно
+    if (external || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    navigateTo(href);
   };
 
   return (
-    <div
-      className="case-card-image"
-      style={{ cursor: "pointer" }}
-      role="link"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
+    <a
+      href={href}
+      className={`card-link ${className}`}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {children}
-      <div className="card-overlay">
-        <ScrambleText className={labelClassName} style={{ color: "#ffffff" }} playing={hovered}>
-          {label}
-        </ScrambleText>
-      </div>
-    </div>
+      <ImageReveal>
+        <div className="case-card-image">
+          {children}
+          <div className="card-overlay">
+            <ScrambleText className={labelClassName} style={{ color: "#ffffff" }} playing={hovered}>
+              {label}
+            </ScrambleText>
+          </div>
+        </div>
+      </ImageReveal>
+      {meta}
+    </a>
   );
 }

@@ -1,6 +1,5 @@
 import { images } from "@/lib/images";
 import CaseCardLink from "@/components/CaseCardLink";
-import ImageReveal from "@/components/ImageReveal";
 import SiteHeader from "@/components/SiteHeader";
 import Hero from "@/components/Hero";
 import PrintBento from "@/components/PrintBento";
@@ -101,26 +100,25 @@ export default function Home() {
           <div className="cases-grid">
             {CASES.map((c) => (
               <article key={c.name} className="case-tile">
-                <ImageReveal>
-                  <CaseCardLink
-                    href={c.href}
-                    external={c.external}
-                    label={c.label}
-                    labelClassName={c.label ? "typo-nav site-overlay-text" : undefined}
-                  >
-                    <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
-                    <ul className="case-tile-tags">
-                      {c.tags.map((tag) => (
-                        <li key={tag}>{tag}</li>
-                      ))}
-                    </ul>
-                  </CaseCardLink>
-                </ImageReveal>
-
-                <div className="case-tile-head">
-                  <h3 className="case-tile-title">{c.name}</h3>
-                  <p className="typo-body2 text-primary">{c.desc}</p>
-                </div>
+                <CaseCardLink
+                  href={c.href}
+                  external={c.external}
+                  label={c.label}
+                  labelClassName={c.label ? "typo-nav site-overlay-text" : undefined}
+                  meta={
+                    <div className="case-tile-head">
+                      <h3 className="case-tile-title">{c.name}</h3>
+                      <p className="typo-body2 text-primary">{c.desc}</p>
+                    </div>
+                  }
+                >
+                  <img src={c.src} alt={c.name} className="w-full h-full object-cover" style={c.imgStyle} />
+                  <ul className="case-tile-tags">
+                    {c.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </CaseCardLink>
               </article>
             ))}
           </div>
@@ -132,21 +130,20 @@ export default function Home() {
           <div className="cases-grid">
             {SITES.map((s) => (
               <article key={s.name} className="case-tile">
-                <ImageReveal>
-                  <CaseCardLink
-                    href={s.href}
-                    external
-                    label="ПЕРЕЙТИ НА САЙТ"
-                    labelClassName="typo-nav site-overlay-text"
-                  >
-                    <img src={s.src} alt={s.name} className="w-full h-full object-cover" />
-                  </CaseCardLink>
-                </ImageReveal>
-
-                <div className="case-tile-head">
-                  <h3 className="case-tile-title">{s.name}</h3>
-                  <p className="typo-body2 text-primary">{s.desc}</p>
-                </div>
+                <CaseCardLink
+                  href={s.href}
+                  external
+                  label="ПЕРЕЙТИ НА САЙТ"
+                  labelClassName="typo-nav site-overlay-text"
+                  meta={
+                    <div className="case-tile-head">
+                      <h3 className="case-tile-title">{s.name}</h3>
+                      <p className="typo-body2 text-primary">{s.desc}</p>
+                    </div>
+                  }
+                >
+                  <img src={s.src} alt={s.name} className="w-full h-full object-cover" />
+                </CaseCardLink>
               </article>
             ))}
           </div>

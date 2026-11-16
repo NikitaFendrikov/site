@@ -140,7 +140,7 @@ export default function PrintBento() {
     <>
       <div className="cases-grid">
         {GROUPS.map((g) => (
-          <article key={g.id} className="case-tile">
+          <article key={g.id} className="case-tile print-tile">
             <ImageReveal>
               <div className="print-frame">
                 {g.cover.map((area) => {
@@ -160,10 +160,15 @@ export default function PrintBento() {
               </div>
             </ImageReveal>
 
-            <div className="case-tile-head">
+            {/* Подпись тоже открывает просмотр — с первой работы группы */}
+            <button
+              type="button"
+              className="case-tile-head print-head"
+              onClick={() => setOpen(SLIDES.findIndex((s) => s.area === g.cover[0]))}
+            >
               <h3 className="case-tile-title">{g.title}</h3>
               <p className="typo-body2 text-primary">{g.text}</p>
-            </div>
+            </button>
           </article>
         ))}
       </div>

@@ -456,8 +456,21 @@ html {
     transition: opacity 0.3s ease;
   }
 
-  .case-card-image:hover .card-overlay {
+  .case-card-image:hover .card-overlay,
+  .card-link:hover .card-overlay {
     opacity: 1;
+  }
+
+  /* Карточка-ссылка целиком: картинка и подпись */
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .case-tile .card-link {
+    gap: 14px;
   }
 
   .case-card-meta {
@@ -750,7 +763,8 @@ html {
     transition: width 0.3s ease;
   }
 
-  .case-card-image:hover .site-overlay-text::after {
+  .case-card-image:hover .site-overlay-text::after,
+  .card-link:hover .site-overlay-text::after {
     width: 100%;
   }
 
@@ -1302,8 +1316,19 @@ html {
 }
 
 /* Ховер: увеличивается только эта картинка, внутри своей рамки */
-.print-shot:hover img {
+.print-shot:hover img,
+.print-tile:has(.print-head:hover) .print-shot img {
   transform: scale(1.05);
+}
+
+/* Подпись под печатной работой — кликабельная, как у кейсов */
+.print-head {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: inherit;
+  cursor: zoom-in;
 }
 
 /* Полноэкранный просмотр */
