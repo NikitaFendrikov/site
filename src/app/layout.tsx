@@ -1,28 +1,15 @@
 import type { Metadata } from "next";
-import { Handjet, Manrope } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { NavigationProvider } from "@/context/NavigationContext";
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ШРИФТЫ
-   Handjet — акцентный моноширинный шрифт для заголовков / hero
-   Manrope — основной UI-шрифт для всего остального текста
-   ───────────────────────────────────────────────────────────────────────────── */
-
-const handjet = Handjet({
-  subsets: ["latin", "cyrillic"],
-  axes: ["ELGR", "ELSH"],
-  variable: "--font-handjet",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
-  display: "swap",
-});
+/* Шрифты подключены в globals.css из /public/fonts */
+const FONT_PRELOADS = [
+  "/fonts/handjet-latin-full-normal.woff2",
+  "/fonts/handjet-cyrillic-full-normal.woff2",
+  "/fonts/manrope-latin-wght-normal.woff2",
+  "/fonts/manrope-cyrillic-wght-normal.woff2",
+];
 
 /* ─────────────────────────────────────────────────────────────────────────────
    МЕТАДАННЫЕ САЙТА
@@ -73,9 +60,12 @@ export default function RootLayout({
   return (
     // ↓ Убери класс "dark" для светлой темы по умолчанию, добавь "dark" для тёмной
     <html lang="ru" className="">
-      <body
-        className={`${handjet.variable} ${manrope.variable}`}
-      >
+      <head>
+        {FONT_PRELOADS.map((href) => (
+          <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
+        ))}
+      </head>
+      <body>
         <NavigationProvider>
           <SmoothScroll>{children}</SmoothScroll>
         </NavigationProvider>
