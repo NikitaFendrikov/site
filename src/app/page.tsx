@@ -36,7 +36,7 @@ const CASES: {
   {
     name: "Waybot Robotics",
     desc: "Производитель автономных роботов-уборщиков, резидент «Сколково». Спроектировал интерфейс робота для операторов и техспециалистов, и обращений к технической команде стало на 80% меньше. Сделал корпоративный сайт, который принёс 50+ B2B-заявок.",
-    tags: ["2025–2026", "Web", "Интерфейс робота", "B2B"],
+    tags: ["2025–2026", "Web", "Промышленный интерфейс", "B2B"],
     href: "/waybot",
     src: images.waybot.six,
   },
@@ -155,26 +155,25 @@ export default function Home() {
         </section>
 
         <section id="other" className="home-section home-section--group">
-          <div className="home-section home-section--cases">
-            <SectionLabel className="typo-title">Другие работы</SectionLabel>
-            <p className="typo-body1 text-primary home-section-intro">
-              Не&nbsp;боюсь задач за&nbsp;рамками прямых обязанностей: делаю 3D-визуализацию в&nbsp;Cinema&nbsp;4D,
+          <div className="other-intro">
+            <p className="hero-statement">
+              Не&nbsp;боюсь задач за&nbsp;рамками прямых обязанностей: делаю <span className="nowrap">3D-визуализацию</span> в&nbsp;Cinema&nbsp;4D,
               макеты для&nbsp;печатной продукции в&nbsp;Illustrator и&nbsp;анимацию в&nbsp;After&nbsp;Effects.
             </p>
           </div>
 
           <div id="print" className="home-section home-section--cases">
-            <SectionLabel>Печатная продукция</SectionLabel>
+            <SectionLabel className="typo-title">Печатная продукция</SectionLabel>
             <PrintBento />
           </div>
 
           <div id="three-d" className="home-section home-section--cases">
-            <SectionLabel>3D</SectionLabel>
+            <SectionLabel className="typo-title">3D</SectionLabel>
             <ThreeDSection />
           </div>
 
           <div id="animation" className="home-section home-section--cases">
-            <SectionLabel>Анимация</SectionLabel>
+            <SectionLabel className="typo-title">Анимация</SectionLabel>
             <AnimationTab />
           </div>
         </section>
