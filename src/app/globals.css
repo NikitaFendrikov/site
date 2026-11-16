@@ -1473,14 +1473,6 @@ html {
   background: var(--card);
 }
 
-.case-tile-tags li::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  flex-shrink: 0;
-  background: currentColor;
-}
-
 .case-tile-tags li:first-child {
   color: var(--primary);
 }
