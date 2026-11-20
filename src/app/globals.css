@@ -902,7 +902,7 @@ html {
 
 .topbar-nav-item {
   position: relative;
-  display: block;
+  display: flex; /* как у ссылок справа: строка текста без лишнего межстрочного, базовая линия общая */
   color: var(--primary);
   opacity: 0.45;
   transition: opacity 0.3s ease;
@@ -1221,14 +1221,13 @@ html {
 /* Ссылка с иконкой слева; подчёркивание только под текстом */
 .icon-link {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline; /* низ иконки на базовой линии текста */
   gap: 6px;
   color: var(--primary);
 }
 
 .link-icon {
-  width: 1.1em;
-  height: 1.1em;
+  height: 0.66em;
   flex-shrink: 0;
   font-size: var(--nav-size);
 }
