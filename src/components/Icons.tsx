@@ -24,7 +24,7 @@ export function PdfIcon() {
     <svg
       className="link-icon"
       viewBox="2.837 0.837 18.326 22.326"
-      style={{ width: "0.542em" }}
+      style={{ width: "0.542em", marginRight: "-2px" /* у документа визуальный зазор больше, чем у самолётика */ }}
       fill="none"
       stroke="currentColor"
       strokeWidth={2.326}
