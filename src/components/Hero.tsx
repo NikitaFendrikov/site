@@ -32,7 +32,7 @@ export default function Hero() {
           до&nbsp;дизайн-системы. Сократил обращения операторов в&nbsp;техподдержку
           на&nbsp;<strong>80%</strong>, привлёк сайтом <strong>50+</strong> заявок на&nbsp;продукт
           стоимостью от&nbsp;<strong className="nowrap">1,5&nbsp;млн&nbsp;₽</strong> и&nbsp;спроектировал
-          сценарии, через которые прошли <strong>500+</strong> пользователей.
+          сценарии, которые экономят пользователям минимум <strong className="nowrap">2&nbsp;часа</strong> на&nbsp;задачу.
         </p>
 
         <p className="hero-note" style={{ opacity: play ? 1 : 0 }}>
