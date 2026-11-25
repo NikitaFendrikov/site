@@ -21,10 +21,10 @@ export default function SiteHeader() {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= line) current = id;
       }
-      // Презентации закончились, печать ещё не началась — это вводный текст
-      // «Других работ», на нём не горит ни один пункт
-      const pres = document.getElementById("presentations");
-      if (current === "presentations" && pres && pres.getBoundingClientRect().bottom < line) current = null;
+      // Кейсы закончились, сайты ещё не начались — это текст-отбивка,
+      // на нём не горит ни один пункт
+      const cases = document.getElementById("cases");
+      if (current === "cases" && cases && cases.getBoundingClientRect().bottom < line) current = null;
       setActive(current);
     };
 

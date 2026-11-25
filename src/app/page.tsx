@@ -124,6 +124,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Отбивка: дальше не кейсы, а смежные задачи */}
+        <div className="other-intro">
+          <p className="hero-statement">
+            Помимо продуктового дизайна, могу закрыть и&nbsp;смежные задачи: подготовить презентацию,
+            самостоятельно разработать сайт, сделать <span className="nowrap">3D-визуализацию</span> в&nbsp;Cinema&nbsp;4D,
+            макеты для&nbsp;печатной продукции в&nbsp;Illustrator и&nbsp;анимацию в&nbsp;After&nbsp;Effects.
+          </p>
+        </div>
+
         <section id="sites" className="home-section home-section--cases">
           <SectionLabel className="typo-title">Сайты</SectionLabel>
 
@@ -155,13 +164,6 @@ export default function Home() {
         </section>
 
         <section id="other" className="home-section home-section--group">
-          <div className="other-intro">
-            <p className="hero-statement">
-              Не&nbsp;боюсь задач за&nbsp;рамками прямых обязанностей: делаю <span className="nowrap">3D-визуализацию</span> в&nbsp;Cinema&nbsp;4D,
-              макеты для&nbsp;печатной продукции в&nbsp;Illustrator и&nbsp;анимацию в&nbsp;After&nbsp;Effects.
-            </p>
-          </div>
-
           <div id="print" className="home-section home-section--cases">
             <SectionLabel className="typo-title">Печатная продукция</SectionLabel>
             <PrintBento />
