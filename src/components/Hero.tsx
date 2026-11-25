@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="hero-inner">
         <p className="hero-statement">
           <strong className="nowrap">Дизайнер</strong> с&nbsp;коммерческим опытом <strong>более
-          3&nbsp;лет</strong>. Проектирую B2B-сервисы от&nbsp;исследования и&nbsp;сценариев
+          3&nbsp;лет</strong>. Проектирую B2B-сервисы от&nbsp;исследований
           до&nbsp;дизайн-системы. Сократил обращения операторов в&nbsp;техподдержку
           на&nbsp;<strong>80%</strong>, привлёк сайтом <strong>50+</strong> заявок на&nbsp;продукт
           стоимостью от&nbsp;<strong className="nowrap">1,5&nbsp;млн&nbsp;₽</strong> и&nbsp;спроектировал

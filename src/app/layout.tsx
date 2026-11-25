@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Никита Фендриков",
     template: "%s - Никита Фендриков",
   },
-  description: "Дизайнер с коммерческим опытом более 3 лет. Проектирую B2B-сервисы от исследования и сценариев до дизайн-системы.",
+  description: "Дизайнер с коммерческим опытом более 3 лет. Проектирую B2B-сервисы от исследований до дизайн-системы.",
   metadataBase: new URL("https://nikitafendrikov.ru"),
   openGraph: {
     type: "website",
